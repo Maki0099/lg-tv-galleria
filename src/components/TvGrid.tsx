@@ -2,52 +2,173 @@
 import { TvCard } from "./TvCard";
 
 const tvs = [
-  // OLED evo řada - prémiová
+  // OLED řada
   {
     id: 1,
-    title: "LG OLED evo G3 65\"",
+    title: "LG OLED G3 65\"",
+    subtitle: "Gallery Series - Špičkový model s MLA",
     image: "https://cdn.datart.cz/images/product/1000x1000/202303/TV-OLED-LG-OLED65G3LA-000.jpg",
     price: 69990,
-    rating: 4.8,
-    location: "Praha",
-    series: "OLED evo",
-    features: ["8K", "α9 AI Processor", "Infinite Contrast", "Dolby Vision IQ", "HDMI 2.1"],
-    highlights: ["Jas až 2000 nit", "Perfect Black", "NVIDIA G-Sync"]
+    series: "OLED",
+    tier: "Premium",
+    features: ["4K", "MLA technologie", "α9 AI Gen6", "144Hz"],
+    highlights: [
+      "Nejvyšší jas díky MLA technologii",
+      "Nekonečný kontrast",
+      "Dokonalá černá",
+      "Gallery Design"
+    ],
+    recommendation: "Pro náročné uživatele hledající to nejlepší"
   },
   {
     id: 2,
-    title: "LG OLED evo C3 65\"",
+    title: "LG OLED C3 65\"",
+    subtitle: "Nejlepší poměr cena/výkon",
     image: "https://cdn.datart.cz/images/product/1000x1000/202303/TV-OLED-LG-OLED65C3LA-000.jpg",
     price: 49990,
-    rating: 4.7,
-    location: "Brno",
-    series: "OLED evo",
-    features: ["4K", "α9 AI Processor", "Infinite Contrast", "Dolby Vision", "HDMI 2.1"],
-    highlights: ["Jas až 1000 nit", "Perfect Black", "AMD FreeSync"]
+    series: "OLED",
+    tier: "High-end",
+    features: ["4K", "120Hz", "α9 AI Gen6", "HDMI 2.1"],
+    highlights: [
+      "Vysoký jas OLED Evo",
+      "Perfektní pro filmy a hry",
+      "4× HDMI 2.1"
+    ],
+    recommendation: "Pro filmové nadšence a hráče"
   },
-  // QNED řada - střední třída
   {
     id: 3,
-    title: "LG QNED MiniLED 75\"",
-    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-75QNED813RE-000.jpg",
-    price: 45990,
-    rating: 4.6,
-    location: "Ostrava",
-    series: "QNED",
-    features: ["4K", "α7 AI Processor", "Local Dimming", "HDR10", "HDMI 2.1"],
-    highlights: ["Quantum Dot", "MiniLED podsvícení"]
+    title: "LG OLED B3 65\"",
+    subtitle: "Dostupnější OLED",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202303/TV-OLED-LG-OLED65B3LA-000.jpg",
+    price: 39990,
+    series: "OLED",
+    tier: "Mid-range",
+    features: ["4K", "120Hz", "α7 AI Gen6"],
+    highlights: [
+      "OLED kvalita obrazu",
+      "Dobrý pro gaming",
+      "Skvělá cena za OLED"
+    ],
+    recommendation: "Pro ty, kdo chtějí OLED za rozumnou cenu"
   },
-  // LED řada - základní
+
+  // QNED řada
   {
     id: 4,
-    title: "LG LED UHD 70\"",
+    title: "LG QNED99 75\"",
+    subtitle: "8K Mini LED vlajková loď",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-75QNED993PB-000.jpg",
+    price: 89990,
+    series: "QNED",
+    tier: "Premium",
+    features: ["8K", "Mini LED", "α9 AI Gen6"],
+    highlights: [
+      "8K rozlišení",
+      "Prémiové Mini LED podsvícení",
+      "Quantum Dot + NanoCell"
+    ],
+    recommendation: "Pro ty, kdo chtějí nejvyšší rozlišení"
+  },
+  {
+    id: 5,
+    title: "LG QNED91 65\"",
+    subtitle: "4K Mini LED premium model",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-65QNED916RE-000.jpg",
+    price: 45990,
+    series: "QNED",
+    tier: "High-end",
+    features: ["4K", "Mini LED", "α7 AI Gen6"],
+    highlights: [
+      "Prémiové Mini LED podsvícení",
+      "Quantum Dot + NanoCell",
+      "Vysoký jas a kontrast"
+    ],
+    recommendation: "Pro milovníky jasného obrazu"
+  },
+  {
+    id: 6,
+    title: "LG QNED81 65\"",
+    subtitle: "Základní QNED model",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-65QNED813RE-000.jpg",
+    price: 29990,
+    series: "QNED",
+    tier: "Mid-range",
+    features: ["4K", "Quantum Dot", "α7 AI Gen5"],
+    highlights: [
+      "QNED technologie",
+      "Dobrý poměr cena/výkon",
+      "Živé barvy"
+    ],
+    recommendation: "Pro ty, kdo chtějí kvalitní obraz za rozumnou cenu"
+  },
+
+  // LED NanoCell řada
+  {
+    id: 7,
+    title: "LG NANO91 65\"",
+    subtitle: "Prémiový NanoCell",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-65NANO916QA-000.jpg",
+    price: 25990,
+    series: "NanoCell",
+    tier: "High-end",
+    features: ["4K", "Local Dimming", "α7 AI Gen5"],
+    highlights: [
+      "Lokální stmívání",
+      "NanoCell technologie",
+      "Přesné barvy"
+    ],
+    recommendation: "Pro ty, kdo chtějí kvalitní barvy"
+  },
+  {
+    id: 8,
+    title: "LG NANO75 65\"",
+    subtitle: "Dostupný NanoCell",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-65NANO753QA-000.jpg",
+    price: 19990,
+    series: "NanoCell",
+    tier: "Mid-range",
+    features: ["4K", "NanoCell", "α5 AI Gen5"],
+    highlights: [
+      "Cenově dostupná",
+      "Lepší barvy než LED",
+      "4K rozlišení"
+    ],
+    recommendation: "Pro běžné sledování TV"
+  },
+
+  // LED řada
+  {
+    id: 9,
+    title: "LG UR8 70\"",
+    subtitle: "Moderní základní model",
     image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-70UR78003LK-000.jpg",
     price: 22990,
-    rating: 4.4,
-    location: "Praha",
     series: "LED",
-    features: ["4K", "α5 AI Processor", "HDR", "WebOS"],
-    highlights: ["Direct LED"]
+    tier: "Entry",
+    features: ["4K", "HDR", "WebOS 23"],
+    highlights: [
+      "Velká úhlopříčka",
+      "Dobrá cena",
+      "Smart TV funkce"
+    ],
+    recommendation: "Pro nenáročné uživatele"
+  },
+  {
+    id: 10,
+    title: "LG UQ7 65\"",
+    subtitle: "Ekonomická volba",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-65UQ7003LB-000.jpg",
+    price: 15990,
+    series: "LED",
+    tier: "Entry",
+    features: ["4K", "HDR", "WebOS 22"],
+    highlights: [
+      "Nízká cena",
+      "4K rozlišení",
+      "Smart funkce"
+    ],
+    recommendation: "Nejlepší poměr cena/velikost"
   }
 ];
 
@@ -61,14 +182,16 @@ export const TvGrid = () => {
   }, {} as Record<string, typeof tvs>);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-12">
+    <div className="container mx-auto px-4 py-8 space-y-16">
       {Object.entries(groupedTvs).map(([series, seriesTvs]) => (
-        <div key={series} className="space-y-4">
-          <div className="flex items-center space-x-4">
-            <h2 className="text-2xl font-semibold">{series}</h2>
-            <div className="h-px flex-1 bg-border" />
+        <div key={series} className="space-y-6">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900">{series}</h2>
+            <p className="text-lg text-muted-foreground">
+              {getTechnologyDescription(series)}
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {seriesTvs.map((tv) => (
               <TvCard key={tv.id} {...tv} />
             ))}
@@ -77,4 +200,19 @@ export const TvGrid = () => {
       ))}
     </div>
   );
+};
+
+const getTechnologyDescription = (series: string) => {
+  switch (series) {
+    case "OLED":
+      return "Nejvyšší kvalita obrazu s dokonalou černou a nekonečným kontrastem. Každý pixel svítí samostatně.";
+    case "QNED":
+      return "Kombinace Quantum Dot a NanoCell s Mini LED podsvícením pro jasný a živý obraz s výborným kontrastem.";
+    case "NanoCell":
+      return "Technologie NanoCell zajišťuje čisté a přesné barvy díky filtraci nežádoucích odstínů.";
+    case "LED":
+      return "Klasická LED technologie nabízí spolehlivý obraz za příznivou cenu.";
+    default:
+      return "";
+  }
 };

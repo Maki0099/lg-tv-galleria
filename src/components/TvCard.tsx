@@ -1,42 +1,61 @@
 
 import { useState } from "react";
-import { Star, Check } from "lucide-react";
+import { Star, Check, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TvCardProps {
   title: string;
+  subtitle: string;
   image: string;
   price: number;
-  rating: number;
-  location: string;
   series: string;
+  tier: string;
   features: string[];
   highlights: string[];
+  recommendation: string;
 }
 
 export const TvCard = ({ 
   title, 
+  subtitle,
   image, 
   price, 
-  rating, 
-  location, 
   series, 
+  tier,
   features,
-  highlights 
+  highlights,
+  recommendation
 }: TvCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   // Určení barvy pozadí podle série
   const getSeriesStyle = () => {
     switch (series) {
-      case "OLED evo":
-        return "bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200";
+      case "OLED":
+        return "bg-gradient-to-br from-zinc-50 to-zinc-100 border-zinc-200";
       case "QNED":
+        return "bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200";
+      case "NanoCell":
         return "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200";
       case "LED":
         return "bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200";
       default:
         return "bg-card";
+    }
+  };
+
+  const getTierBadgeStyle = () => {
+    switch (tier) {
+      case "Premium":
+        return "bg-amber-500 text-white";
+      case "High-end":
+        return "bg-sky-500 text-white";
+      case "Mid-range":
+        return "bg-blue-500 text-white";
+      case "Entry":
+        return "bg-slate-500 text-white";
+      default:
+        return "bg-gray-500 text-white";
     }
   };
 
@@ -52,6 +71,14 @@ export const TvCard = ({
           className="w-full h-full object-cover"
           loading="lazy"
         />
+        <div className="absolute top-3 left-3">
+          <span className={cn(
+            "px-2 py-1 rounded text-xs font-medium",
+            getTierBadgeStyle()
+          )}>
+            {tier}
+          </span>
+        </div>
         <button
           onClick={() => setIsFavorite(!isFavorite)}
           className="absolute top-3 right-3 p-2 rounded-full bg-background/80 
@@ -67,17 +94,15 @@ export const TvCard = ({
       </div>
       
       <div className="p-4 space-y-4">
-        <div>
+        <div className="space-y-1">
           <h3 className="font-medium text-lg">{title}</h3>
-          <div className="flex items-center justify-between text-sm text-muted-foreground mt-1">
-            <span>{location}</span>
-            <span className="font-semibold text-foreground">
-              {price.toLocaleString("cs-CZ")} Kč
-            </span>
-          </div>
+          <p className="text-sm text-muted-foreground">{subtitle}</p>
+          <p className="text-xl font-bold text-sky-600">
+            {price.toLocaleString("cs-CZ")} Kč
+          </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex flex-wrap gap-1">
             {features.map((feature) => (
               <span 
@@ -93,10 +118,15 @@ export const TvCard = ({
           <div className="space-y-1">
             {highlights.map((highlight) => (
               <div key={highlight} className="flex items-center text-sm text-muted-foreground">
-                <Check className="h-4 w-4 mr-2 text-sky-500" />
+                <Check className="h-4 w-4 mr-2 text-sky-500 shrink-0" />
                 {highlight}
               </div>
             ))}
+          </div>
+
+          <div className="flex items-start gap-2 p-3 bg-sky-500/5 rounded-lg">
+            <Info className="h-5 w-5 text-sky-500 shrink-0 mt-0.5" />
+            <p className="text-sm text-sky-700">{recommendation}</p>
           </div>
         </div>
       </div>
