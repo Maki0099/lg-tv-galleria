@@ -18,7 +18,8 @@ const tvs = [
       "Dokonalá černá",
       "Gallery Design"
     ],
-    recommendation: "Pro náročné uživatele hledající to nejlepší"
+    recommendation: "Pro náročné uživatele hledající to nejlepší",
+    sizes: ["55\"", "65\"", "77\"", "83\""]
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ const tvs = [
       "Perfektní pro filmy a hry",
       "4× HDMI 2.1"
     ],
-    recommendation: "Pro filmové nadšence a hráče"
+    recommendation: "Pro filmové nadšence a hráče",
+    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""]
   },
   {
     id: 3,
@@ -50,7 +52,8 @@ const tvs = [
       "Dobrý pro gaming",
       "Skvělá cena za OLED"
     ],
-    recommendation: "Pro ty, kdo chtějí OLED za rozumnou cenu"
+    recommendation: "Pro ty, kdo chtějí OLED za rozumnou cenu",
+    sizes: ["55\"", "65\"", "77\""]
   },
 
   // QNED řada
@@ -68,7 +71,8 @@ const tvs = [
       "Prémiové Mini LED podsvícení",
       "Quantum Dot + NanoCell"
     ],
-    recommendation: "Pro ty, kdo chtějí nejvyšší rozlišení"
+    recommendation: "Pro ty, kdo chtějí nejvyšší rozlišení",
+    sizes: ["65\"", "75\"", "86\""]
   },
   {
     id: 5,
@@ -84,7 +88,8 @@ const tvs = [
       "Quantum Dot + NanoCell",
       "Vysoký jas a kontrast"
     ],
-    recommendation: "Pro milovníky jasného obrazu"
+    recommendation: "Pro milovníky jasného obrazu",
+    sizes: ["65\"", "75\"", "86\""]
   },
   {
     id: 6,
@@ -100,7 +105,8 @@ const tvs = [
       "Dobrý poměr cena/výkon",
       "Živé barvy"
     ],
-    recommendation: "Pro ty, kdo chtějí kvalitní obraz za rozumnou cenu"
+    recommendation: "Pro ty, kdo chtějí kvalitní obraz za rozumnou cenu",
+    sizes: ["50\"", "55\"", "65\"", "75\"", "86\""]
   },
 
   // LED NanoCell řada
@@ -118,7 +124,8 @@ const tvs = [
       "NanoCell technologie",
       "Přesné barvy"
     ],
-    recommendation: "Pro ty, kdo chtějí kvalitní barvy"
+    recommendation: "Pro ty, kdo chtějí kvalitní barvy",
+    sizes: ["55\"", "65\"", "75\"", "86\""]
   },
   {
     id: 8,
@@ -134,7 +141,8 @@ const tvs = [
       "Lepší barvy než LED",
       "4K rozlišení"
     ],
-    recommendation: "Pro běžné sledování TV"
+    recommendation: "Pro běžné sledování TV",
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
   },
 
   // LED řada
@@ -152,7 +160,8 @@ const tvs = [
       "Dobrá cena",
       "Smart TV funkce"
     ],
-    recommendation: "Pro nenáročné uživatele"
+    recommendation: "Pro nenáročné uživatele",
+    sizes: ["43\"", "50\"", "55\"", "65\"", "70\"", "75\"", "86\""]
   },
   {
     id: 10,
@@ -168,7 +177,8 @@ const tvs = [
       "4K rozlišení",
       "Smart funkce"
     ],
-    recommendation: "Nejlepší poměr cena/velikost"
+    recommendation: "Nejlepší poměr cena/velikost",
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
   }
 ];
 

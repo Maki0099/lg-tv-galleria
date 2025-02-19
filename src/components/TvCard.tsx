@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Star, Check, Info } from "lucide-react";
+import { Star, Check, Info, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TvCardProps {
@@ -13,6 +13,7 @@ interface TvCardProps {
   features: string[];
   highlights: string[];
   recommendation: string;
+  sizes?: string[]; // Přidáváme novou property pro velikosti
 }
 
 export const TvCard = ({ 
@@ -24,7 +25,8 @@ export const TvCard = ({
   tier,
   features,
   highlights,
-  recommendation
+  recommendation,
+  sizes = [] // Výchozí hodnota prázdné pole
 }: TvCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -103,6 +105,13 @@ export const TvCard = ({
         </div>
 
         <div className="space-y-3">
+          {sizes.length > 0 && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Monitor className="h-4 w-4 text-sky-500" />
+              <p>Dostupné úhlopříčky: {sizes.join(", ")}</p>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-1">
             {features.map((feature) => (
               <span 
