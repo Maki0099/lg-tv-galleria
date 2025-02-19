@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Star } from "lucide-react";
+import { Star, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TvCardProps {
@@ -9,13 +9,42 @@ interface TvCardProps {
   price: number;
   rating: number;
   location: string;
+  series: string;
+  features: string[];
+  highlights: string[];
 }
 
-export const TvCard = ({ title, image, price, rating, location }: TvCardProps) => {
+export const TvCard = ({ 
+  title, 
+  image, 
+  price, 
+  rating, 
+  location, 
+  series, 
+  features,
+  highlights 
+}: TvCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  // Určení barvy pozadí podle série
+  const getSeriesStyle = () => {
+    switch (series) {
+      case "OLED evo":
+        return "bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200";
+      case "QNED":
+        return "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200";
+      case "LED":
+        return "bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200";
+      default:
+        return "bg-card";
+    }
+  };
+
   return (
-    <div className="card-hover relative rounded-lg overflow-hidden bg-card">
+    <div className={cn(
+      "card-hover relative rounded-lg overflow-hidden border",
+      getSeriesStyle()
+    )}>
       <div className="relative aspect-video">
         <img 
           src={image} 
@@ -37,13 +66,38 @@ export const TvCard = ({ title, image, price, rating, location }: TvCardProps) =
         </button>
       </div>
       
-      <div className="p-4">
-        <h3 className="font-medium text-lg mb-2">{title}</h3>
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>{location}</span>
-          <span className="font-semibold text-foreground">
-            {price.toLocaleString("cs-CZ")} Kč
-          </span>
+      <div className="p-4 space-y-4">
+        <div>
+          <h3 className="font-medium text-lg">{title}</h3>
+          <div className="flex items-center justify-between text-sm text-muted-foreground mt-1">
+            <span>{location}</span>
+            <span className="font-semibold text-foreground">
+              {price.toLocaleString("cs-CZ")} Kč
+            </span>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex flex-wrap gap-1">
+            {features.map((feature) => (
+              <span 
+                key={feature}
+                className="inline-flex items-center px-2 py-1 rounded-full 
+                         text-xs font-medium bg-background/60"
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+          
+          <div className="space-y-1">
+            {highlights.map((highlight) => (
+              <div key={highlight} className="flex items-center text-sm text-muted-foreground">
+                <Check className="h-4 w-4 mr-2 text-green-500" />
+                {highlight}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
