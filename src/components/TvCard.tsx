@@ -30,11 +30,11 @@ export const TvCard = ({
   const getSeriesStyle = () => {
     switch (series) {
       case "OLED evo":
-        return "bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200";
+        return "bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200";
       case "QNED":
         return "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200";
       case "LED":
-        return "bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200";
+        return "bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200";
       default:
         return "bg-card";
     }
@@ -60,7 +60,7 @@ export const TvCard = ({
           <Star 
             className={cn(
               "h-5 w-5",
-              isFavorite ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"
+              isFavorite ? "fill-sky-500 text-sky-500" : "text-muted-foreground"
             )} 
           />
         </button>
@@ -83,7 +83,7 @@ export const TvCard = ({
               <span 
                 key={feature}
                 className="inline-flex items-center px-2 py-1 rounded-full 
-                         text-xs font-medium bg-background/60"
+                         text-xs font-medium bg-sky-500/10 text-sky-700"
               >
                 {feature}
               </span>
@@ -93,7 +93,7 @@ export const TvCard = ({
           <div className="space-y-1">
             {highlights.map((highlight) => (
               <div key={highlight} className="flex items-center text-sm text-muted-foreground">
-                <Check className="h-4 w-4 mr-2 text-green-500" />
+                <Check className="h-4 w-4 mr-2 text-sky-500" />
                 {highlight}
               </div>
             ))}
