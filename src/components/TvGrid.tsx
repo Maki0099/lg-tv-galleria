@@ -6,7 +6,7 @@ const tvs = [
   {
     id: 1,
     title: "LG OLED evo G3 65\"",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202303/TV-OLED-LG-OLED65G3LA-000.jpg",
     price: 69990,
     rating: 4.8,
     location: "Praha",
@@ -17,7 +17,7 @@ const tvs = [
   {
     id: 2,
     title: "LG OLED evo C3 65\"",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202303/TV-OLED-LG-OLED65C3LA-000.jpg",
     price: 49990,
     rating: 4.7,
     location: "Brno",
@@ -29,7 +29,7 @@ const tvs = [
   {
     id: 3,
     title: "LG QNED MiniLED 75\"",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-75QNED813RE-000.jpg",
     price: 45990,
     rating: 4.6,
     location: "Ostrava",
@@ -41,7 +41,7 @@ const tvs = [
   {
     id: 4,
     title: "LG LED UHD 70\"",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    image: "https://cdn.datart.cz/images/product/1000x1000/202304/TV-LED-LG-70UR78003LK-000.jpg",
     price: 22990,
     rating: 4.4,
     location: "Praha",
