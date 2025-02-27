@@ -1,5 +1,6 @@
 
 import { TvCard } from "./TvCard";
+import { useTranslation } from "react-i18next";
 
 const tvs = [
   // OLED řada
@@ -183,6 +184,8 @@ const tvs = [
 ];
 
 export const TvGrid = () => {
+  const { t } = useTranslation();
+  
   const groupedTvs = tvs.reduce((acc, tv) => {
     if (!acc[tv.series]) {
       acc[tv.series] = [];
@@ -196,9 +199,9 @@ export const TvGrid = () => {
       {Object.entries(groupedTvs).map(([series, seriesTvs]) => (
         <div key={series} className="space-y-6">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-gray-900">{series}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t(`tvSeries.${series}.name`, series)}</h2>
             <p className="text-lg text-muted-foreground">
-              {getTechnologyDescription(series)}
+              {t(`tvSeries.${series}.description`, getTechnologyDescription(series))}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,0 +1,38 @@
+
+{
+  "brand": "LG TV Gallery",
+  "navigation": {
+    "news": "News",
+    "search": "Search TV..."
+  },
+  "filters": {
+    "all": "All",
+    "smart": "Smart TV",
+    "gaming": "Gaming",
+    "hdr": "HDR",
+    "dolby": "Dolby Vision"
+  },
+  "tvSeries": {
+    "OLED": {
+      "name": "OLED",
+      "description": "Highest picture quality with perfect black and infinite contrast. Each pixel emits light independently."
+    },
+    "QNED": {
+      "name": "QNED",
+      "description": "Combination of Quantum Dot and NanoCell with Mini LED backlight for bright and vivid picture with excellent contrast."
+    },
+    "NanoCell": {
+      "name": "NanoCell",
+      "description": "NanoCell technology ensures clean and accurate colors by filtering unwanted tones."
+    },
+    "LED": {
+      "name": "LED",
+      "description": "Classic LED technology offers reliable picture at an affordable price."
+    }
+  },
+  "tvCard": {
+    "price": "CZK",
+    "availableSizes": "Available sizes",
+    "recommendation": "Recommendation"
+  }
+}

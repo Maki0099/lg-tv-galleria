@@ -1,13 +1,15 @@
 
 import { useRef } from "react";
-
-const filters = [
-  "Všechny", "OLED", "QNED", "LED", "4K", "8K", 
-  "Smart TV", "Gaming", "HDR", "Dolby Vision"
-];
+import { useTranslation } from "react-i18next";
 
 export const Filters = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+
+  const filters = [
+    t('filters.all'), "OLED", "QNED", "LED", "4K", "8K", 
+    t('filters.smart'), t('filters.gaming'), "HDR", t('filters.dolby')
+  ];
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {

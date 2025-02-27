@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Star, Check, Info, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface TvCardProps {
   title: string;
@@ -13,7 +14,7 @@ interface TvCardProps {
   features: string[];
   highlights: string[];
   recommendation: string;
-  sizes?: string[]; // Přidáváme novou property pro velikosti
+  sizes?: string[];
 }
 
 export const TvCard = ({ 
@@ -26,9 +27,10 @@ export const TvCard = ({
   features,
   highlights,
   recommendation,
-  sizes = [] // Výchozí hodnota prázdné pole
+  sizes = []
 }: TvCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { t } = useTranslation();
 
   // Určení barvy pozadí podle série
   const getSeriesStyle = () => {
@@ -100,7 +102,7 @@ export const TvCard = ({
           <h3 className="font-medium text-lg">{title}</h3>
           <p className="text-sm text-muted-foreground">{subtitle}</p>
           <p className="text-xl font-bold text-sky-600">
-            {price.toLocaleString("cs-CZ")} Kč
+            {price.toLocaleString("cs-CZ")} {t('tvCard.price')}
           </p>
         </div>
 
@@ -108,7 +110,7 @@ export const TvCard = ({
           {sizes.length > 0 && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Monitor className="h-4 w-4 text-sky-500" />
-              <p>Dostupné úhlopříčky: {sizes.join(", ")}</p>
+              <p>{t('tvCard.availableSizes')}: {sizes.join(", ")}</p>
             </div>
           )}
 

@@ -11,19 +11,19 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 199 84% 55%;    /* Datart modrá #0EA5E9 */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: 37 100% 53%;    /* FFB612 */
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 222 86% 25%;  /* 001744 */
+    --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 199 84% 55%;     /* Datart modrá pro zvýraznění */
+    --accent: 37 100% 53%;     /* FFB612 */
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 199 84% 55%;       /* Datart modrá pro focus ring */
+    --ring: 37 100% 53%;       /* FFB612 */
     --radius: 0.5rem;
   }
 }
@@ -43,11 +43,11 @@
   }
   
   .filter-chip {
-    @apply px-4 py-2 rounded-full bg-sky-500/10 text-sky-600 
-           hover:bg-sky-500/20 transition-colors cursor-pointer;
+    @apply px-4 py-2 rounded-full bg-[#FFB612]/10 text-[#001744] 
+           hover:bg-[#FFB612]/20 transition-colors cursor-pointer;
   }
 
   .nav-link {
-    @apply text-muted-foreground hover:text-sky-600 transition-colors;
+    @apply text-muted-foreground hover:text-[#FFB612] transition-colors;
   }
 }

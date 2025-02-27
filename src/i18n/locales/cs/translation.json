@@ -1,0 +1,38 @@
+
+{
+  "brand": "LG TV Galleria",
+  "navigation": {
+    "news": "Novinky",
+    "search": "Hledat TV..."
+  },
+  "filters": {
+    "all": "Všechny",
+    "smart": "Smart TV",
+    "gaming": "Gaming",
+    "hdr": "HDR",
+    "dolby": "Dolby Vision"
+  },
+  "tvSeries": {
+    "OLED": {
+      "name": "OLED",
+      "description": "Nejvyšší kvalita obrazu s dokonalou černou a nekonečným kontrastem. Každý pixel svítí samostatně."
+    },
+    "QNED": {
+      "name": "QNED",
+      "description": "Kombinace Quantum Dot a NanoCell s Mini LED podsvícením pro jasný a živý obraz s výborným kontrastem."
+    },
+    "NanoCell": {
+      "name": "NanoCell",
+      "description": "Technologie NanoCell zajišťuje čisté a přesné barvy díky filtraci nežádoucích odstínů."
+    },
+    "LED": {
+      "name": "LED",
+      "description": "Klasická LED technologie nabízí spolehlivý obraz za příznivou cenu."
+    }
+  },
+  "tvCard": {
+    "price": "Kč",
+    "availableSizes": "Dostupné úhlopříčky",
+    "recommendation": "Doporučení"
+  }
+}
