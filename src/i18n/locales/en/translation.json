@@ -1,34 +1,47 @@
 
 {
-  "brand": "LG TV Gallery",
   "navigation": {
-    "news": "New Arrivals",
-    "search": "Search TVs...",
+    "home": "Home",
     "back": "Back"
   },
-  "filters": {
-    "all": "All TVs",
-    "smart": "Smart TV",
-    "gaming": "Gaming",
-    "dolby": "Dolby Vision"
+  "filter": {
+    "title": "Filters",
+    "price": "Price",
+    "priceRange": "Price Range",
+    "minPrice": "Min Price",
+    "maxPrice": "Max Price",
+    "series": "Series",
+    "features": "Features",
+    "clear": "Clear Filters",
+    "apply": "Apply Filters"
+  },
+  "tvGrid": {
+    "title": "TV Models",
+    "emptyTitle": "No TVs Found",
+    "emptyText": "No TVs match your filters. Try adjusting your criteria."
   },
   "tvCard": {
     "price": "Kč",
-    "availableSizes": "Available sizes"
+    "availableSizes": "Available Sizes",
+    "size": "Size"
   },
   "tvDetail": {
     "specifications": "Specifications",
     "features": "Features",
     "highlights": "Highlights",
-    "recommendation": "Recommendation",
-    "seriesModels": "Other {{series}} models"
+    "recommendation": "Recommended For",
+    "seriesModels": "Other {{series}} Models",
+    "availableSizes": "Available Size Variants",
+    "selected": "Currently Viewing",
+    "viewing": "Current",
+    "view": "View"
   },
-  "theme": {
-    "toggle": "Toggle dark mode"
+  "viewToggle": {
+    "detail": "Detailed View",
+    "compact": "Compact View"
   },
-  "view": {
-    "toggle": "Toggle view mode",
-    "compactView": "Switch to compact view",
-    "expandedView": "Switch to expanded view"
+  "language": {
+    "cs": "Čeština",
+    "en": "English"
   }
 }

@@ -1,29 +1,47 @@
 
 {
-  "brand": "LG TV Galerie",
   "navigation": {
-    "news": "Novinky",
-    "search": "Hledat TV...",
+    "home": "Domů",
     "back": "Zpět"
   },
-  "filters": {
-    "all": "Všechny TV",
-    "smart": "Smart TV",
-    "gaming": "Hry",
-    "dolby": "Dolby Vision"
+  "filter": {
+    "title": "Filtry",
+    "price": "Cena",
+    "priceRange": "Cenové rozmezí",
+    "minPrice": "Min. cena",
+    "maxPrice": "Max. cena",
+    "series": "Série",
+    "features": "Funkce",
+    "clear": "Vyčistit filtry",
+    "apply": "Použít filtry"
+  },
+  "tvGrid": {
+    "title": "TV Modely",
+    "emptyTitle": "Žádné TV nenalezeny",
+    "emptyText": "Žádné TV neodpovídají vašim filtrům. Zkuste upravit kritéria."
   },
   "tvCard": {
     "price": "Kč",
-    "availableSizes": "Dostupné velikosti"
+    "availableSizes": "Dostupné velikosti",
+    "size": "Velikost"
   },
   "tvDetail": {
     "specifications": "Specifikace",
     "features": "Funkce",
-    "highlights": "Hlavní přednosti",
-    "recommendation": "Doporučení",
-    "seriesModels": "Další modely řady {{series}}"
+    "highlights": "Přednosti",
+    "recommendation": "Doporučeno pro",
+    "seriesModels": "Další modely série {{series}}",
+    "availableSizes": "Dostupné velikostní varianty",
+    "selected": "Aktuálně zobrazeno",
+    "viewing": "Aktuální",
+    "view": "Zobrazit"
   },
-  "theme": {
-    "toggle": "Přepnout tmavý režim"
+  "viewToggle": {
+    "detail": "Detailní zobrazení",
+    "compact": "Kompaktní zobrazení"
+  },
+  "language": {
+    "cs": "Čeština",
+    "en": "English"
   }
 }
