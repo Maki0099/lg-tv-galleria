@@ -26,6 +26,28 @@
     --ring: 37 100% 53%;       /* FFB612 */
     --radius: 0.5rem;
   }
+
+  .dark {
+    --background: 220 86% 10%;  /* Darkened 001744 */
+    --foreground: 0 0% 98%;
+    --card: 220 86% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 86% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 37 100% 53%;    /* FFB612 */
+    --primary-foreground: 220 86% 15%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222 86% 25%;  /* 001744 */
+    --muted: 220 86% 17%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 37 100% 45%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 86% 20%;
+    --input: 220 86% 20%;
+    --ring: 37 100% 53%;       /* FFB612 */
+  }
 }
 
 @layer base {
@@ -39,15 +61,17 @@
 
 @layer components {
   .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-black/30;
   }
   
   .filter-chip {
     @apply px-4 py-2 rounded-full bg-[#FFB612]/10 text-[#001744] 
-           hover:bg-[#FFB612]/20 transition-colors cursor-pointer;
+           hover:bg-[#FFB612]/20 transition-colors cursor-pointer
+           dark:bg-[#FFB612]/20 dark:text-white dark:hover:bg-[#FFB612]/30;
   }
 
   .nav-link {
-    @apply text-muted-foreground hover:text-[#FFB612] transition-colors;
+    @apply text-muted-foreground hover:text-[#FFB612] transition-colors
+           dark:text-muted-foreground dark:hover:text-[#FFB612];
   }
 }

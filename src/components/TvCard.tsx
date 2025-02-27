@@ -36,15 +36,15 @@ export const TvCard = ({
   const getSeriesStyle = () => {
     switch (series) {
       case "OLED":
-        return "bg-gradient-to-br from-zinc-50 to-zinc-100 border-zinc-200";
+        return "bg-gradient-to-br from-zinc-50 to-zinc-100 border-zinc-200 dark:from-zinc-900 dark:to-zinc-950 dark:border-zinc-800";
       case "QNED":
-        return "bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200";
+        return "bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200 dark:from-sky-950 dark:to-sky-900 dark:border-sky-800";
       case "NanoCell":
-        return "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200";
+        return "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 dark:from-blue-950 dark:to-blue-900 dark:border-blue-800";
       case "LED":
-        return "bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200";
+        return "bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200 dark:from-slate-950 dark:to-slate-900 dark:border-slate-800";
       default:
-        return "bg-card";
+        return "bg-card dark:bg-card";
     }
   };
 
@@ -86,7 +86,8 @@ export const TvCard = ({
         <button
           onClick={() => setIsFavorite(!isFavorite)}
           className="absolute top-3 right-3 p-2 rounded-full bg-background/80 
-                     backdrop-blur-sm hover:bg-background transition-colors"
+                     backdrop-blur-sm hover:bg-background transition-colors
+                     dark:bg-black/60 dark:hover:bg-black/80"
         >
           <Star 
             className={cn(
@@ -101,7 +102,7 @@ export const TvCard = ({
         <div className="space-y-1">
           <h3 className="font-medium text-lg">{title}</h3>
           <p className="text-sm text-muted-foreground">{subtitle}</p>
-          <p className="text-xl font-bold text-sky-600">
+          <p className="text-xl font-bold text-sky-600 dark:text-sky-400">
             {price.toLocaleString("cs-CZ")} {t('tvCard.price')}
           </p>
         </div>
@@ -109,7 +110,7 @@ export const TvCard = ({
         <div className="space-y-3">
           {sizes.length > 0 && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Monitor className="h-4 w-4 text-sky-500" />
+              <Monitor className="h-4 w-4 text-sky-500 dark:text-sky-400" />
               <p>{t('tvCard.availableSizes')}: {sizes.join(", ")}</p>
             </div>
           )}
@@ -119,7 +120,8 @@ export const TvCard = ({
               <span 
                 key={feature}
                 className="inline-flex items-center px-2 py-1 rounded-full 
-                         text-xs font-medium bg-sky-500/10 text-sky-700"
+                         text-xs font-medium bg-sky-500/10 text-sky-700
+                         dark:bg-sky-500/20 dark:text-sky-300"
               >
                 {feature}
               </span>
@@ -129,15 +131,15 @@ export const TvCard = ({
           <div className="space-y-1">
             {highlights.map((highlight) => (
               <div key={highlight} className="flex items-center text-sm text-muted-foreground">
-                <Check className="h-4 w-4 mr-2 text-sky-500 shrink-0" />
+                <Check className="h-4 w-4 mr-2 text-sky-500 dark:text-sky-400 shrink-0" />
                 {highlight}
               </div>
             ))}
           </div>
 
-          <div className="flex items-start gap-2 p-3 bg-sky-500/5 rounded-lg">
-            <Info className="h-5 w-5 text-sky-500 shrink-0 mt-0.5" />
-            <p className="text-sm text-sky-700">{recommendation}</p>
+          <div className="flex items-start gap-2 p-3 bg-sky-500/5 rounded-lg dark:bg-sky-500/10">
+            <Info className="h-5 w-5 text-sky-500 dark:text-sky-400 shrink-0 mt-0.5" />
+            <p className="text-sm text-sky-700 dark:text-sky-300">{recommendation}</p>
           </div>
         </div>
       </div>
