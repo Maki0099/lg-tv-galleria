@@ -9,21 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      TV: {
+      "LGTV 2": {
         Row: {
-          "kód;Název;URL;cena;Kategorie;Dostupnost centrálního skladu;":
-            | string
-            | null
+          cena: number | null
+          "Dostupnost centrálního skladu": string | null
+          "Dostupnost na prodejně": string | null
+          Kategorie: string | null
+          kód: string | null
+          Název: string | null
+          Obrázek: string | null
+          URL: string | null
         }
         Insert: {
-          "kód;Název;URL;cena;Kategorie;Dostupnost centrálního skladu;"?:
-            | string
-            | null
+          cena?: number | null
+          "Dostupnost centrálního skladu"?: string | null
+          "Dostupnost na prodejně"?: string | null
+          Kategorie?: string | null
+          kód?: string | null
+          Název?: string | null
+          Obrázek?: string | null
+          URL?: string | null
         }
         Update: {
-          "kód;Název;URL;cena;Kategorie;Dostupnost centrálního skladu;"?:
-            | string
-            | null
+          cena?: number | null
+          "Dostupnost centrálního skladu"?: string | null
+          "Dostupnost na prodejně"?: string | null
+          Kategorie?: string | null
+          kód?: string | null
+          Název?: string | null
+          Obrázek?: string | null
+          URL?: string | null
         }
         Relationships: []
       }
