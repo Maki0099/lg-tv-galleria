@@ -7,9 +7,10 @@ import { FeatureTags } from "@/components/tv-card/FeatureTags";
 import { HighlightsList } from "@/components/tv-card/HighlightsList";
 import { SizeDisplay } from "@/components/tv-card/SizeDisplay";
 import { TierBadge } from "@/components/tv-card/TierBadge";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Monitor } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
+import { Button } from "@/components/ui/button";
 
 const TvDetail = () => {
   const { id } = useParams();
@@ -65,7 +66,22 @@ const TvDetail = () => {
                 {tv.price.toLocaleString("cs-CZ")} {t("tvCard.price")}
               </p>
 
-              <SizeDisplay sizes={tv.sizes || []} />
+              {/* Enhanced size display */}
+              {tv.sizes && tv.sizes.length > 0 && (
+                <div className="bg-[#F8F8F8] dark:bg-[#1A1A1A] p-4 rounded-lg border border-[#EAEAEA] dark:border-[#333333]">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Monitor className="h-5 w-5 text-[#FFB612] dark:text-[#FFB612]" />
+                    <h3 className="font-medium">{t("tvCard.availableSizes")}:</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {tv.sizes.map((size) => (
+                      <div key={size} className="px-3 py-1 bg-white dark:bg-[#2A2A2A] rounded-full border border-[#EAEAEA] dark:border-[#444444] text-sm">
+                        {size}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
