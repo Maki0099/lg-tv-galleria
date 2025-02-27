@@ -4,6 +4,7 @@ import { TvModel } from "@/data/tvData";
 import { tvs as fallbackTvs } from "@/data/tvData";
 import { fetchTvsFromSupabase } from "@/utils/tvUtils";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const useTvData = () => {
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,18 @@ export const useTvData = () => {
       try {
         setLoading(true);
         setError(null);
+        
+        // Přidáno: Přímé načtení vzorku dat z Supabase pro kontrolu
+        const { data: rawData, error: rawError } = await supabase
+          .from("LGTV 2")
+          .select("*")
+          .limit(5);
+        
+        if (rawError) {
+          console.error("Error fetching raw data sample:", rawError);
+        } else {
+          console.log("Raw data sample from Supabase (first 5 records):", rawData);
+        }
         
         const tvData = await fetchTvsFromSupabase();
         
