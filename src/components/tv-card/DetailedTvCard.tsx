@@ -8,12 +8,14 @@ import { FeatureTags } from "./FeatureTags";
 import { HighlightsList } from "./HighlightsList";
 import { RecommendationBox } from "./RecommendationBox";
 import { SizeDisplay } from "./SizeDisplay";
+import { useNavigate } from "react-router-dom";
 
 interface DetailedTvCardProps extends TvModel {
   getSeriesStyle: () => string;
 }
 
 export const DetailedTvCard = ({ 
+  id,
   title, 
   subtitle, 
   image, 
@@ -26,12 +28,16 @@ export const DetailedTvCard = ({
   getSeriesStyle 
 }: DetailedTvCardProps) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   
   return (
-    <div className={cn(
-      "card-hover relative rounded-lg overflow-hidden border",
-      getSeriesStyle()
-    )}>
+    <div 
+      className={cn(
+        "card-hover relative rounded-lg overflow-hidden border cursor-pointer",
+        getSeriesStyle()
+      )}
+      onClick={() => navigate(`/tv/${id}`)}
+    >
       <div className="relative aspect-video">
         <img 
           src={image} 
@@ -42,7 +48,7 @@ export const DetailedTvCard = ({
         <div className="absolute top-3 left-3">
           <TierBadge tier={tier} />
         </div>
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3" onClick={(e) => e.stopPropagation()}>
           <FavoriteButton />
         </div>
       </div>

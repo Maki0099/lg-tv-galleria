@@ -3,7 +3,8 @@
   "brand": "LG TV Gallery",
   "navigation": {
     "news": "New Arrivals",
-    "search": "Search TVs..."
+    "search": "Search TVs...",
+    "back": "Back"
   },
   "filters": {
     "all": "All TVs",
@@ -14,6 +15,12 @@
   "tvCard": {
     "price": "Kč",
     "availableSizes": "Available sizes"
+  },
+  "tvDetail": {
+    "specifications": "Specifications",
+    "features": "Features",
+    "highlights": "Highlights",
+    "recommendation": "Recommendation"
   },
   "theme": {
     "toggle": "Toggle dark mode"

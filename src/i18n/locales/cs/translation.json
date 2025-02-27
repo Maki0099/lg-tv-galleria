@@ -3,7 +3,8 @@
   "brand": "LG TV Galerie",
   "navigation": {
     "news": "Novinky",
-    "search": "Hledat TV..."
+    "search": "Hledat TV...",
+    "back": "Zpět"
   },
   "filters": {
     "all": "Všechny TV",
@@ -14,6 +15,12 @@
   "tvCard": {
     "price": "Kč",
     "availableSizes": "Dostupné velikosti"
+  },
+  "tvDetail": {
+    "specifications": "Specifikace",
+    "features": "Funkce",
+    "highlights": "Hlavní přednosti",
+    "recommendation": "Doporučení"
   },
   "theme": {
     "toggle": "Přepnout tmavý režim"
