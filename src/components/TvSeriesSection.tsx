@@ -1,5 +1,5 @@
 
-import { TvCard } from "./TvCard";
+import { TvCard } from "./tv-card/TvCard";
 import { useTranslation } from "react-i18next";
 import { useView } from "./ViewContext";
 import { cn } from "@/lib/utils";
