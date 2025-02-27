@@ -1,29 +1,62 @@
-import { useParams } from "react-router-dom";
-import { tvs } from "@/data/tvData";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { RecommendationBox } from "@/components/tv-card/RecommendationBox";
 import { FeatureTags } from "@/components/tv-card/FeatureTags";
 import { HighlightsList } from "@/components/tv-card/HighlightsList";
-import { SizeDisplay } from "@/components/tv-card/SizeDisplay";
 import { TierBadge } from "@/components/tv-card/TierBadge";
 import { ChevronLeft, Monitor, Star } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { findSizeVariants } from "@/utils/tvUtils";
+import { useTvData } from "@/hooks/useTvData";
+import { Navigation } from "@/components/Navigation";
 
 const TvDetail = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { loading, data: tvs, getTvById } = useTvData();
 
-  const tv = tvs.find((tv) => tv.id === Number(id));
+  const tv = getTvById(Number(id));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-8 flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FFB612]"></div>
+        </div>
+      </div>
+    );
+  }
 
   if (!tv) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold">TV Not Found</h1>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-8">
+          <button 
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-[#001744] dark:text-[#FFB612] mb-6 hover:opacity-80"
+          >
+            <ChevronLeft className="h-5 w-5" />
+            {t("navigation.back")}
+          </button>
+          <div className="text-center py-12">
+            <h1 className="text-2xl font-bold">TV nebyla nalezena</h1>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Požadovaný model TV neexistuje nebo byl odstraněn.
+            </p>
+            <Button 
+              onClick={() => navigate('/')}
+              className="mt-6 bg-[#001744] hover:bg-[#001744]/90 text-white dark:bg-[#FFB612] dark:text-[#001744] dark:hover:bg-[#FFB612]/90"
+            >
+              Zpět na hlavní stránku
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -41,6 +74,7 @@ const TvDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <button 
           onClick={() => navigate(-1)}
