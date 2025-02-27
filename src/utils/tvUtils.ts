@@ -1,15 +1,19 @@
 
-export const groupTvsByCategories = (tvs: any[]) => {
+import { TvModel } from "@/data/tvData";
+
+// Seskupí TV podle kategorií (OLED, QNED, apod.)
+export const groupTvsByCategories = (tvs: TvModel[]): Record<string, TvModel[]> => {
   return tvs.reduce((acc, tv) => {
     if (!acc[tv.series]) {
       acc[tv.series] = [];
     }
     acc[tv.series].push(tv);
     return acc;
-  }, {} as Record<string, any[]>);
+  }, {} as Record<string, TvModel[]>);
 };
 
-export const getTechnologyDescription = (series: string) => {
+// Získá popis technologie podle série
+export const getTechnologyDescription = (series: string): string => {
   switch (series) {
     case "OLED":
       return "Nejvyšší kvalita obrazu s dokonalou černou a nekonečným kontrastem. Každý pixel svítí samostatně.";
@@ -22,4 +26,20 @@ export const getTechnologyDescription = (series: string) => {
     default:
       return "";
   }
+};
+
+// Filtruje TV podle velikosti displeje
+export const filterTvBySize = (tvs: TvModel[], size: string | null): TvModel[] => {
+  if (!size) return tvs;
+  return tvs.filter(tv => tv.sizes?.includes(size));
+};
+
+// Filtruje TV podle cenového rozpětí
+export const filterTvByPriceRange = (tvs: TvModel[], minPrice: number, maxPrice: number): TvModel[] => {
+  return tvs.filter(tv => tv.price >= minPrice && tv.price <= maxPrice);
+};
+
+// Seřadí TV podle ceny (vzestupně nebo sestupně)
+export const sortTvsByPrice = (tvs: TvModel[], ascending: boolean = true): TvModel[] => {
+  return [...tvs].sort((a, b) => ascending ? a.price - b.price : b.price - a.price);
 };

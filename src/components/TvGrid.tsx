@@ -1,7 +1,7 @@
 
 import { useTranslation } from "react-i18next";
 import { tvs } from "@/data/tvData";
-import { groupTvsByCategories, getTechnologyDescription } from "@/utils/tvUtils";
+import { groupTvsByCategories } from "@/utils/tvUtils";
 import { TvSeriesSection } from "./TvSeriesSection";
 
 export const TvGrid = () => {
@@ -16,7 +16,7 @@ export const TvGrid = () => {
           key={series}
           series={series}
           tvs={seriesTvs}
-          description={getTechnologyDescription(series)}
+          description={t(`tvSeries.${series}.description`, { defaultValue: "" })}
         />
       ))}
     </div>

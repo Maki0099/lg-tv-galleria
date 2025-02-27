@@ -18,9 +18,11 @@ export const TvSeriesSection = ({ series, tvs, description }: TvSeriesSectionPro
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t(`tvSeries.${series}.name`, series)}</h2>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          {t(`tvSeries.${series}.name`, { defaultValue: series })}
+        </h2>
         <p className="text-lg text-muted-foreground">
-          {t(`tvSeries.${series}.description`, description)}
+          {description}
         </p>
       </div>
       <div className={cn(
