@@ -9,6 +9,7 @@ import { SizeDisplay } from "@/components/tv-card/SizeDisplay";
 import { TierBadge } from "@/components/tv-card/TierBadge";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
 
 const TvDetail = () => {
   const { id } = useParams();
@@ -24,6 +25,11 @@ const TvDetail = () => {
       </div>
     );
   }
+
+  // Najít všechny TV ze stejné série
+  const seriesTvs = tvs.filter(
+    (seriesTv) => seriesTv.series === tv.series && seriesTv.id !== tv.id
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -85,6 +91,20 @@ const TvDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* Seznam dalších TV ze stejné série */}
+        {seriesTvs.length > 0 && (
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold mb-6">
+              {t("tvDetail.seriesModels", { series: tv.series })}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {seriesTvs.map((seriesTv) => (
+                <CompactTvCard key={seriesTv.id} tv={seriesTv} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

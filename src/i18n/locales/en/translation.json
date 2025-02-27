@@ -20,7 +20,8 @@
     "specifications": "Specifications",
     "features": "Features",
     "highlights": "Highlights",
-    "recommendation": "Recommendation"
+    "recommendation": "Recommendation",
+    "seriesModels": "Other {{series}} models"
   },
   "theme": {
     "toggle": "Toggle dark mode"

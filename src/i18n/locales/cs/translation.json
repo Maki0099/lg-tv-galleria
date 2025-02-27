@@ -20,7 +20,8 @@
     "specifications": "Specifikace",
     "features": "Funkce",
     "highlights": "Hlavní přednosti",
-    "recommendation": "Doporučení"
+    "recommendation": "Doporučení",
+    "seriesModels": "Další modely řady {{series}}"
   },
   "theme": {
     "toggle": "Přepnout tmavý režim"
