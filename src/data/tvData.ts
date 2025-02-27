@@ -11,6 +11,7 @@ export interface TvModel {
   highlights: string[];
   recommendation: string;
   sizes?: string[];
+  modelNumber?: string; // Přidáme modelové číslo pro přesnější porovnání
 }
 
 export const tvs: TvModel[] = [
@@ -31,7 +32,8 @@ export const tvs: TvModel[] = [
       "Gallery Design"
     ],
     recommendation: "Pro náročné uživatele hledající to nejlepší",
-    sizes: ["55\"", "65\"", "77\"", "83\""]
+    sizes: ["55\"", "65\"", "77\"", "83\""],
+    modelNumber: "G3"
   },
   {
     id: 2,
@@ -48,7 +50,8 @@ export const tvs: TvModel[] = [
       "4× HDMI 2.1"
     ],
     recommendation: "Pro filmové nadšence a hráče",
-    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""]
+    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""],
+    modelNumber: "C3"
   },
   {
     id: 3,
@@ -65,7 +68,8 @@ export const tvs: TvModel[] = [
       "Skvělá cena za OLED"
     ],
     recommendation: "Pro ty, kdo chtějí OLED za rozumnou cenu",
-    sizes: ["55\"", "65\"", "77\""]
+    sizes: ["55\"", "65\"", "77\""],
+    modelNumber: "B3"
   },
 
   // QNED řada
@@ -84,7 +88,8 @@ export const tvs: TvModel[] = [
       "Quantum Dot + NanoCell"
     ],
     recommendation: "Pro ty, kdo chtějí nejvyšší rozlišení",
-    sizes: ["65\"", "75\"", "86\""]
+    sizes: ["65\"", "75\"", "86\""],
+    modelNumber: "QNED99"
   },
   {
     id: 5,
@@ -101,7 +106,8 @@ export const tvs: TvModel[] = [
       "Vysoký jas a kontrast"
     ],
     recommendation: "Pro milovníky jasného obrazu",
-    sizes: ["65\"", "75\"", "86\""]
+    sizes: ["65\"", "75\"", "86\""],
+    modelNumber: "QNED91"
   },
   {
     id: 6,
@@ -118,7 +124,8 @@ export const tvs: TvModel[] = [
       "Živé barvy"
     ],
     recommendation: "Pro ty, kdo chtějí kvalitní obraz za rozumnou cenu",
-    sizes: ["50\"", "55\"", "65\"", "75\"", "86\""]
+    sizes: ["50\"", "55\"", "65\"", "75\"", "86\""],
+    modelNumber: "QNED81"
   },
 
   // LED NanoCell řada
@@ -137,7 +144,8 @@ export const tvs: TvModel[] = [
       "Přesné barvy"
     ],
     recommendation: "Pro ty, kdo chtějí kvalitní barvy",
-    sizes: ["55\"", "65\"", "75\"", "86\""]
+    sizes: ["55\"", "65\"", "75\"", "86\""],
+    modelNumber: "NANO91"
   },
   {
     id: 8,
@@ -154,7 +162,8 @@ export const tvs: TvModel[] = [
       "4K rozlišení"
     ],
     recommendation: "Pro běžné sledování TV",
-    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""],
+    modelNumber: "NANO75"
   },
 
   // LED řada
@@ -173,7 +182,8 @@ export const tvs: TvModel[] = [
       "Smart TV funkce"
     ],
     recommendation: "Pro nenáročné uživatele",
-    sizes: ["43\"", "50\"", "55\"", "65\"", "70\"", "75\"", "86\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "70\"", "75\"", "86\""],
+    modelNumber: "UR8"
   },
   {
     id: 10,
@@ -190,6 +200,83 @@ export const tvs: TvModel[] = [
       "Smart funkce"
     ],
     recommendation: "Nejlepší poměr cena/velikost",
-    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""],
+    modelNumber: "UQ7"
+  },
+  
+  // Přidáme další velikosti pro modely
+  {
+    id: 11,
+    title: "LG OLED G3 55\"",
+    subtitle: "Gallery Series - Špičkový model s MLA",
+    image: "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=800&q=80",
+    price: 54990,
+    series: "OLED",
+    tier: "Premium",
+    features: ["4K", "MLA technologie", "α9 AI Gen6", "144Hz"],
+    highlights: [
+      "Nejvyšší jas díky MLA technologii",
+      "Nekonečný kontrast",
+      "Dokonalá černá",
+      "Gallery Design"
+    ],
+    recommendation: "Pro náročné uživatele hledající to nejlepší",
+    sizes: ["55\"", "65\"", "77\"", "83\""],
+    modelNumber: "G3"
+  },
+  {
+    id: 12,
+    title: "LG OLED G3 77\"",
+    subtitle: "Gallery Series - Špičkový model s MLA",
+    image: "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=800&q=80",
+    price: 89990,
+    series: "OLED",
+    tier: "Premium",
+    features: ["4K", "MLA technologie", "α9 AI Gen6", "144Hz"],
+    highlights: [
+      "Nejvyšší jas díky MLA technologii",
+      "Nekonečný kontrast",
+      "Dokonalá černá",
+      "Gallery Design"
+    ],
+    recommendation: "Pro náročné uživatele hledající to nejlepší",
+    sizes: ["55\"", "65\"", "77\"", "83\""],
+    modelNumber: "G3"
+  },
+  {
+    id: 13,
+    title: "LG OLED C3 55\"",
+    subtitle: "Nejlepší poměr cena/výkon",
+    image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
+    price: 39990,
+    series: "OLED",
+    tier: "High-end",
+    features: ["4K", "120Hz", "α9 AI Gen6", "HDMI 2.1"],
+    highlights: [
+      "Vysoký jas OLED Evo",
+      "Perfektní pro filmy a hry",
+      "4× HDMI 2.1"
+    ],
+    recommendation: "Pro filmové nadšence a hráče",
+    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""],
+    modelNumber: "C3"
+  },
+  {
+    id: 14,
+    title: "LG OLED C3 77\"",
+    subtitle: "Nejlepší poměr cena/výkon",
+    image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
+    price: 69990,
+    series: "OLED",
+    tier: "High-end",
+    features: ["4K", "120Hz", "α9 AI Gen6", "HDMI 2.1"],
+    highlights: [
+      "Vysoký jas OLED Evo",
+      "Perfektní pro filmy a hry",
+      "4× HDMI 2.1"
+    ],
+    recommendation: "Pro filmové nadšence a hráče",
+    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""],
+    modelNumber: "C3"
   }
 ];

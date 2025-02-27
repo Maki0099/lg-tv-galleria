@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { findSizeVariants } from "@/utils/tvUtils";
 
 const TvDetail = () => {
   const { id } = useParams();
@@ -29,16 +30,13 @@ const TvDetail = () => {
 
   // Find all TVs from the same series
   const seriesTvs = tvs.filter(
-    (seriesTv) => seriesTv.series === tv.series && seriesTv.id !== tv.id
+    (seriesTv) => seriesTv.series === tv.series && seriesTv.id !== tv.id && seriesTv.modelNumber !== tv.modelNumber
   );
 
-  // Create a gallery of TVs with the same model but different sizes
-  const sizeVariants = tvs.filter(
-    (sizeTv) => 
-      sizeTv.title.split(" ").slice(0, 2).join(" ") === tv.title.split(" ").slice(0, 2).join(" ") && 
-      sizeTv.id !== tv.id
-  );
+  // Najít varianty stejného modelu v různých velikostech
+  const sizeVariants = findSizeVariants(tv, tvs);
   
+  // Všechny velikostní varianty včetně aktuálního TV
   const allSizeVariants = [tv, ...sizeVariants];
 
   return (
@@ -117,7 +115,7 @@ const TvDetail = () => {
           </div>
         </div>
 
-        {/* Size Variants Gallery */}
+        {/* Size Variants Gallery - pouze velikostní varianty stejného modelu */}
         {sizeVariants.length > 0 && (
           <div className="mt-12">
             <h2 className="text-2xl font-semibold mb-6">
@@ -128,9 +126,9 @@ const TvDetail = () => {
                 <div 
                   key={sizeTv.id} 
                   className={cn(
-                    "border rounded-lg overflow-hidden",
+                    "border rounded-lg overflow-hidden cursor-pointer hover:shadow-md transition-all",
                     sizeTv.id === tv.id 
-                      ? "border-[#FFB612] dark:border-[#FFB612]" 
+                      ? "border-[#FFB612] dark:border-[#FFB612] shadow-md" 
                       : "border-[#EAEAEA] dark:border-[#333333]"
                   )}
                   onClick={() => navigate(`/tv/${sizeTv.id}`)}
@@ -162,7 +160,7 @@ const TvDetail = () => {
                       />
                       <div className="absolute bottom-2 left-2">
                         <div className="bg-[#FFB612] text-[#001744] text-xs font-medium px-2 py-1 rounded">
-                          {sizeTv.sizes && sizeTv.sizes[0]}
+                          {sizeTv.title.split(" ").pop()?.replace(/"/g, "")}
                         </div>
                       </div>
                     </div>

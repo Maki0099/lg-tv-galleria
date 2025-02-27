@@ -43,3 +43,14 @@ export const filterTvByPriceRange = (tvs: TvModel[], minPrice: number, maxPrice:
 export const sortTvsByPrice = (tvs: TvModel[], ascending: boolean = true): TvModel[] => {
   return [...tvs].sort((a, b) => ascending ? a.price - b.price : b.price - a.price);
 };
+
+// Najde všechny velikostní varianty stejného modelu
+export const findSizeVariants = (tv: TvModel, allTvs: TvModel[]): TvModel[] => {
+  if (!tv.modelNumber) return [];
+  
+  return allTvs.filter(
+    sizeTv => 
+      sizeTv.modelNumber === tv.modelNumber && 
+      sizeTv.id !== tv.id
+  );
+};
