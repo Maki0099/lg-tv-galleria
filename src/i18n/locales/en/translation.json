@@ -17,5 +17,10 @@
   },
   "theme": {
     "toggle": "Toggle dark mode"
+  },
+  "view": {
+    "toggle": "Toggle view mode",
+    "compactView": "Switch to compact view",
+    "expandedView": "Switch to expanded view"
   }
 }

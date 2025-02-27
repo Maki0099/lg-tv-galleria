@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Star, Check, Info, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import { useView } from "./ViewContext";
 
 interface TvCardProps {
   title: string;
@@ -31,6 +32,7 @@ export const TvCard = ({
 }: TvCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { t } = useTranslation();
+  const { isCompactView } = useView();
 
   // Určení barvy pozadí podle série
   const getSeriesStyle = () => {
@@ -62,6 +64,87 @@ export const TvCard = ({
         return "bg-gray-500 text-white";
     }
   };
+
+  if (isCompactView) {
+    return (
+      <div className={cn(
+        "card-hover relative rounded-lg overflow-hidden border",
+        getSeriesStyle()
+      )}>
+        <div className="flex">
+          <div className="relative w-24 h-24 md:w-32 md:h-32 shrink-0">
+            <img 
+              src={image} 
+              alt={title} 
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute top-1 left-1">
+              <span className={cn(
+                "px-1 py-0.5 rounded text-[10px] font-medium",
+                getTierBadgeStyle()
+              )}>
+                {tier}
+              </span>
+            </div>
+          </div>
+          
+          <div className="p-2 flex-1 flex flex-col justify-between">
+            <div>
+              <div className="flex justify-between items-start">
+                <h3 className="font-medium text-sm">{title}</h3>
+                <button
+                  onClick={() => setIsFavorite(!isFavorite)}
+                  className="p-1"
+                >
+                  <Star 
+                    className={cn(
+                      "h-4 w-4",
+                      isFavorite ? "fill-sky-500 text-sky-500" : "text-muted-foreground"
+                    )} 
+                  />
+                </button>
+              </div>
+              <p className="text-xs text-muted-foreground line-clamp-1">{subtitle}</p>
+            </div>
+            
+            <div className="mt-auto">
+              <p className="text-sm font-bold text-sky-600 dark:text-sky-400">
+                {price.toLocaleString("cs-CZ")} {t('tvCard.price')}
+              </p>
+              
+              {sizes.length > 0 && (
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Monitor className="h-3 w-3 text-sky-500 dark:text-sky-400" />
+                  <p className="truncate">{sizes.join(", ")}</p>
+                </div>
+              )}
+              
+              <div className="flex flex-wrap gap-1 mt-1">
+                {features.slice(0, 2).map((feature) => (
+                  <span 
+                    key={feature}
+                    className="inline-flex items-center px-1.5 py-0.5 rounded-full 
+                             text-[10px] font-medium bg-sky-500/10 text-sky-700
+                             dark:bg-sky-500/20 dark:text-sky-300"
+                  >
+                    {feature}
+                  </span>
+                ))}
+                {features.length > 2 && (
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-full 
+                                 text-[10px] font-medium bg-sky-500/10 text-sky-700
+                                 dark:bg-sky-500/20 dark:text-sky-300">
+                    +{features.length - 2}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={cn(
