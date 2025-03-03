@@ -6,7 +6,7 @@ import { useTvData } from "@/hooks/useTvData";
 
 export const TvGrid = () => {
   const { t } = useTranslation();
-  const { loading, data: tvData } = useTvData();
+  const { loading, error, data: tvData } = useTvData();
   
   const groupedTvs = groupTvsByCategories(tvData);
 
@@ -15,6 +15,21 @@ export const TvGrid = () => {
       <div className="container mx-auto px-4 py-8 space-y-16">
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FFB612]"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8 space-y-16">
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-bold text-red-600 dark:text-red-400">
+            Chyba při načítání dat
+          </h2>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">
+            {error.message || 'Nepodařilo se načíst data o televizích.'}
+          </p>
         </div>
       </div>
     );

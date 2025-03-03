@@ -19,18 +19,36 @@ export const TvSeriesSection = ({ series, tvs, description }: TvSeriesSectionPro
   const getTitleColor = (series: string) => {
     switch(series) {
       case "OLED":
-        return "text-[#001744]";
+        return "text-[#001744] dark:text-[#001744]/90";
       case "QNED":
+        return "text-[#FFB612] dark:text-[#FFB612]";
       case "NanoCell":
+        return "text-[#001744] dark:text-[#FFB612]/90";
       case "LED":
-        return "text-[#FFB612]";
+        return "text-[#FFB612] dark:text-[#FFB612]/90";
       default:
         return "text-gray-900 dark:text-white";
     }
   };
 
+  // Funkce pro styl pozadí sekce podle série
+  const getSectionStyle = (series: string) => {
+    switch(series) {
+      case "OLED":
+        return "border-l-4 border-[#001744] pl-4";
+      case "QNED":
+        return "border-l-4 border-[#FFB612] pl-4";
+      case "NanoCell":
+        return "border-l-4 border-[#001744] pl-4";
+      case "LED":
+        return "border-l-4 border-[#FFB612] pl-4";
+      default:
+        return "";
+    }
+  };
+
   return (
-    <div className="space-y-6">
+    <div className={cn("space-y-6", getSectionStyle(series))}>
       <div className="space-y-2">
         <h2 className={cn("text-3xl font-bold", getTitleColor(series))}>
           {t(`tvSeries.${series}.name`, { defaultValue: series })}
