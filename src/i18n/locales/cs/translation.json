@@ -30,6 +30,7 @@
   "tvDetail": {
     "specifications": "Specifikace",
     "features": "Funkce",
+    "keyFeatures": "Klíčové vlastnosti",
     "highlights": "Přednosti",
     "recommendation": "Doporučeno pro",
     "seriesModels": "Další modely série {{series}}",

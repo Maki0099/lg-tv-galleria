@@ -30,6 +30,7 @@
   "tvDetail": {
     "specifications": "Specifications",
     "features": "Features",
+    "keyFeatures": "Key Features",
     "highlights": "Highlights",
     "recommendation": "Recommended For",
     "seriesModels": "Other {{series}} Models",

@@ -22,6 +22,17 @@ export const TvSpecifications = ({ tv }: TvSpecificationsProps) => {
             <FeatureTags features={tv.features} />
           </div>
 
+          {tv.keyFeaturesFull && (
+            <div>
+              <h3 className="font-medium mb-2">{t("tvDetail.keyFeatures")}</h3>
+              <div className="p-4 rounded-md bg-[#001744]/5 dark:bg-[#FFB612]/10">
+                <p className="text-sm whitespace-pre-line">
+                  {tv.keyFeaturesFull}
+                </p>
+              </div>
+            </div>
+          )}
+
           <div>
             <h3 className="font-medium mb-2">{t("tvDetail.highlights")}</h3>
             <HighlightsList highlights={tv.highlights} />

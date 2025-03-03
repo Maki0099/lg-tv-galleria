@@ -80,6 +80,9 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         }
       }
 
+      // Zachytíme plné znění Key features pro detail produktu
+      const keyFeaturesFull = item["Key features"] || "";
+
       // Generování highlightů z Description
       let highlights = ["Vysoký jas", "Živé barvy", "Skvělý zvuk"];
       if (item.Description) {
@@ -113,7 +116,8 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         features: features,
         highlights: highlights,
         recommendation: "Pro běžné sledování TV",
-        sizes: sizes
+        sizes: sizes,
+        keyFeaturesFull: keyFeaturesFull  // Přidáme plné znění Key features
       };
     });
 
