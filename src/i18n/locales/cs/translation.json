@@ -43,5 +43,25 @@
   "language": {
     "cs": "Čeština",
     "en": "English"
+  },
+  "technology": {
+    "title": "Technologie",
+    "modelSeries": "Modelové řady"
+  },
+  "modelSeries": {
+    "highlights": "Hlavní přednosti",
+    "availableSizes": "Dostupné velikosti",
+    "showModels": "Zobrazit modely",
+    "sortBy": "Seřadit podle"
+  },
+  "sizes": {
+    "title": "Velikosti",
+    "diagonal": "úhlopříčka"
+  },
+  "filters": {
+    "all": "Vše",
+    "gaming": "Gaming",
+    "smart": "Smart TV",
+    "dolby": "Dolby Vision"
   }
 }

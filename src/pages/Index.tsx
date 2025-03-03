@@ -1,14 +1,15 @@
 
 import { Navigation } from "@/components/Navigation";
-import { Filters } from "@/components/Filters";
-import { TvGrid } from "@/components/TvGrid";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useTvData } from "@/hooks/useTvData";
+import { TechnologySection } from "@/components/TechnologySection";
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
   const { data, loading, error } = useTvData();
+  const { toast } = useToast();
 
   // Check Supabase connection on component mount
   useEffect(() => {
@@ -34,6 +35,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      
       {isConnected === false && (
         <div className="container mx-auto px-4 mt-4">
           <div className="bg-yellow-100 border-l-4 border-[#FFB612] text-[#001744] p-4 rounded" role="alert">
@@ -42,6 +44,7 @@ const Index = () => {
           </div>
         </div>
       )}
+      
       {error && (
         <div className="container mx-auto px-4 mt-4">
           <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
@@ -50,8 +53,30 @@ const Index = () => {
           </div>
         </div>
       )}
-      <Filters />
-      <TvGrid />
+      
+      <div className="container mx-auto px-4 py-8">
+        <header className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#001744] to-[#FFB612]">
+            Průvodce televizory LG
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Vyberte si televizor podle technologie a modelové řady, která nejlépe odpovídá vašim potřebám
+          </p>
+        </header>
+        
+        {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FFB612]"></div>
+          </div>
+        ) : (
+          <div className="space-y-8">
+            <TechnologySection technology="OLED" />
+            <TechnologySection technology="QNED" />
+            <TechnologySection technology="NanoCell" />
+            <TechnologySection technology="LED" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
