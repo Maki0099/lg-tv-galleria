@@ -41,8 +41,11 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         tier = "Mid-range";
       }
 
+      // Generování jedinečného ID, pokud neexistuje
+      const itemId = index + 1;
+
       return {
-        id: item.id || index + 1,
+        id: itemId,
         title: item.Název || `TV Model ${index}`,
         subtitle: item.Kategorie || "TV",
         image: item.Obrázek || "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
@@ -81,4 +84,16 @@ export function groupTvsByCategories(tvs: TvModel[]): Record<string, TvModel[]> 
   });
   
   return grouped;
+}
+
+// Přidáme funkci pro nalezení velikostních variant stejného modelu
+export function findSizeVariants(tv: TvModel, allTvs: TvModel[]): TvModel[] {
+  if (!tv.modelNumber) return [];
+  
+  return allTvs.filter(
+    (otherTv) => 
+      otherTv.id !== tv.id && 
+      otherTv.modelNumber === tv.modelNumber &&
+      otherTv.series === tv.series
+  );
 }
