@@ -15,10 +15,24 @@ export const TvSeriesSection = ({ series, tvs, description }: TvSeriesSectionPro
   const { t } = useTranslation();
   const { isCompactView } = useView();
 
+  // Funkce pro výběr barvy nadpisu podle série
+  const getTitleColor = (series: string) => {
+    switch(series) {
+      case "OLED":
+        return "text-[#001744]";
+      case "QNED":
+      case "NanoCell":
+      case "LED":
+        return "text-[#FFB612]";
+      default:
+        return "text-gray-900 dark:text-white";
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h2 className={cn("text-3xl font-bold", getTitleColor(series))}>
           {t(`tvSeries.${series}.name`, { defaultValue: series })}
         </h2>
         <p className="text-lg text-muted-foreground">

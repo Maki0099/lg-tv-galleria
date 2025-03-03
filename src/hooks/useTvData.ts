@@ -20,18 +20,6 @@ export const useTvData = () => {
         setLoading(true);
         setError(null);
         
-        // Přidáno: Přímé načtení vzorku dat z Supabase pro kontrolu
-        const { data: rawData, error: rawError } = await supabase
-          .from("LGTV 2")
-          .select("*")
-          .limit(5);
-        
-        if (rawError) {
-          console.error("Error fetching raw data sample:", rawError);
-        } else {
-          console.log("Raw data sample from Supabase (first 5 records):", rawData);
-        }
-        
         const tvData = await fetchTvsFromSupabase();
         
         if (isMounted) {

@@ -4,9 +4,11 @@ import { Filters } from "@/components/Filters";
 import { TvGrid } from "@/components/TvGrid";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useTvData } from "@/hooks/useTvData";
 
 const Index = () => {
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
+  const { data, loading, error } = useTvData();
 
   // Check Supabase connection on component mount
   useEffect(() => {
@@ -34,9 +36,17 @@ const Index = () => {
       <Navigation />
       {isConnected === false && (
         <div className="container mx-auto px-4 mt-4">
-          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded" role="alert">
+          <div className="bg-yellow-100 border-l-4 border-[#FFB612] text-[#001744] p-4 rounded" role="alert">
             <p className="font-bold">Upozornění</p>
             <p>Nepodařilo se připojit k databázi. Budou zobrazena výchozí data.</p>
+          </div>
+        </div>
+      )}
+      {error && (
+        <div className="container mx-auto px-4 mt-4">
+          <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
+            <p className="font-bold">Chyba</p>
+            <p>{error.message}</p>
           </div>
         </div>
       )}
