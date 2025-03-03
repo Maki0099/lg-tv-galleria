@@ -2,13 +2,13 @@
 import { Navigation } from "@/components/Navigation";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { useTvData } from "@/hooks/useTvData";
+import { useTvRepository } from "@/hooks/useTvRepository";
 import { TechnologySection } from "@/components/TechnologySection";
 import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
-  const { data, loading, error } = useTvData();
+  const { loading, error, isReady } = useTvRepository();
   const { toast } = useToast();
 
   // Check Supabase connection on component mount

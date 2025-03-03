@@ -1,23 +1,59 @@
 
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { findSizeVariants } from "@/utils/tv";
-import { useTvData } from "@/hooks/useTvData";
+import { useTvRepository } from "@/hooks/useTvRepository";
 import { Navigation } from "@/components/Navigation";
 import { TvHeader } from "@/components/tv-detail/TvHeader";
 import { TvSpecifications } from "@/components/tv-detail/TvSpecifications";
 import { TvSizeVariants } from "@/components/tv-detail/TvSizeVariants";
 import { TvSeries } from "@/components/tv-detail/TvSeries";
+import { TvModel } from "@/data/models/TvModel";
 
 const TvDetail = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loading, data: tvs, getTvById } = useTvData();
+  const { loading, isReady, repository } = useTvRepository();
+  const [tv, setTv] = useState<TvModel | undefined>(undefined);
+  const [sizeVariants, setSizeVariants] = useState<TvModel[]>([]);
+  const [seriesTvs, setSeriesTvs] = useState<TvModel[]>([]);
 
-  const tv = getTvById(Number(id));
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isReady && repository && id) {
+        const tvModel = await repository.getTvById(Number(id));
+        setTv(tvModel);
+
+        if (tvModel) {
+          // Get TVs from the same model series but different sizes
+          const allTvs = await repository.getAllTvs();
+          
+          // Size variants are TVs with the same model number but different sizes
+          const variants = allTvs.filter(
+            other => 
+              other.id !== tvModel.id && 
+              other.modelNumber === tvModel.modelNumber && 
+              other.series === tvModel.series
+          );
+          setSizeVariants(variants);
+          
+          // Series TVs are other TVs from the same series but different model numbers
+          const seriesModels = allTvs.filter(
+            other => 
+              other.series === tvModel.series && 
+              other.id !== tvModel.id && 
+              other.modelNumber !== tvModel.modelNumber
+          );
+          setSeriesTvs(seriesModels);
+        }
+      }
+    };
+    
+    fetchData();
+  }, [isReady, repository, id]);
 
   if (loading) {
     return (
@@ -58,14 +94,6 @@ const TvDetail = () => {
       </div>
     );
   }
-
-  // Find all TVs from the same series
-  const seriesTvs = tvs.filter(
-    (seriesTv) => seriesTv.series === tv.series && seriesTv.id !== tv.id && seriesTv.modelNumber !== tv.modelNumber
-  );
-
-  // Najít varianty stejného modelu v různých velikostech
-  const sizeVariants = findSizeVariants(tv, tvs);
 
   return (
     <div className="min-h-screen bg-background">

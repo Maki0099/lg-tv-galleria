@@ -1,28 +1,38 @@
 
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { useTvData } from "@/hooks/useTvData";
-import { getModelSeriesById, getTvsByModelSeries, sortTvsBySizeDescending } from "@/utils/tv";
+import { getModelSeriesById } from "@/utils/tv";
 import { ModelSeriesHeader } from "@/components/model-series/ModelSeriesHeader";
 import { ModelSeriesTvList } from "@/components/model-series/ModelSeriesTvList";
+import { useTvRepository } from "@/hooks/useTvRepository";
+import { TvModel } from "@/data/models/TvModel";
 
 const ModelSeriesDetail = () => {
   const { seriesId } = useParams<{ seriesId: string }>();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loading, data: tvs } = useTvData();
+  const { loading, isReady, repository } = useTvRepository();
+  const [seriesTvs, setSeriesTvs] = useState<TvModel[]>([]);
 
   // Získání informací o modelové řadě
   const seriesInfo = seriesId ? getModelSeriesById(seriesId) : null;
   
-  // Získání TV patřících do modelové řady
-  const seriesTvs = seriesId ? getTvsByModelSeries(tvs, seriesId) : [];
-  
-  // Seřazení TV podle velikosti úhlopříčky (od největší k nejmenší)
-  const sortedTvs = sortTvsBySizeDescending(seriesTvs);
+  // Fetch TVs for this series when repository is ready
+  useEffect(() => {
+    const fetchTvs = async () => {
+      if (isReady && repository && seriesId) {
+        const tvs = await repository.getTvsByModelNumber(seriesId);
+        // Sort by size (largest first)
+        setSeriesTvs(repository.sortTvsBySize(tvs, false));
+      }
+    };
+    
+    fetchTvs();
+  }, [isReady, repository, seriesId]);
 
   if (loading) {
     return (
@@ -80,7 +90,7 @@ const ModelSeriesDetail = () => {
         <ModelSeriesHeader seriesInfo={seriesInfo} />
 
         {/* Seznam televizí v dané modelové řadě */}
-        <ModelSeriesTvList tvs={sortedTvs} />
+        <ModelSeriesTvList tvs={seriesTvs} />
       </div>
     </div>
   );

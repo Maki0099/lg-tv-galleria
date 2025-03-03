@@ -1,5 +1,5 @@
 
-import { TvModel } from "@/data/tvData";
+import { TvModel } from "@/data/models/TvModel";
 import { modelSeriesInfo } from "./modelSeriesInfo";
 
 // Funkce pro získání unikátních modelových řad podle technologie

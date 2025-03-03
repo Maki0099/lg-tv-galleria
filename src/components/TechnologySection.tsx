@@ -1,7 +1,10 @@
 
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { ModelSeriesCard } from "./ModelSeriesCard";
 import { technologyInfo, getModelSeriesByTechnology } from "@/utils/tv";
+import { useTvRepository } from "@/hooks/useTvRepository";
+import { TvModel } from "@/data/models/TvModel";
 
 interface TechnologySectionProps {
   technology: string;
@@ -9,8 +12,21 @@ interface TechnologySectionProps {
 
 export const TechnologySection = ({ technology }: TechnologySectionProps) => {
   const { t } = useTranslation();
+  const { isReady, repository } = useTvRepository();
+  const [tvCount, setTvCount] = useState(0);
   const techInfo = technologyInfo[technology as keyof typeof technologyInfo];
   const modelSeries = getModelSeriesByTechnology(technology);
+  
+  useEffect(() => {
+    const getTvCount = async () => {
+      if (isReady && repository) {
+        const tvs = await repository.getTvsBySeries(technology);
+        setTvCount(tvs.length);
+      }
+    };
+    
+    getTvCount();
+  }, [isReady, repository, technology]);
   
   // Funkce pro výběr barvy pozadí podle technologie
   const getBgColor = (tech: string) => {
@@ -84,6 +100,7 @@ export const TechnologySection = ({ technology }: TechnologySectionProps) => {
         {getTechIcon(technology)}
         <h2 className={`text-2xl font-bold ${getTitleColor(technology)}`}>
           {technology} {t("technology.title", { defaultValue: "Technologie" })}
+          {tvCount > 0 && <span className="text-sm font-normal ml-2">({tvCount} {t("technology.models", { defaultValue: "modelů" })})</span>}
         </h2>
       </div>
       
