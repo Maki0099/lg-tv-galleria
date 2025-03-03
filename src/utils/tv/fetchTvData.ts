@@ -1,5 +1,5 @@
 
-import { TvModel } from "@/data/tvData";
+import { TvModel } from "@/data/models/TvModel";
 import { supabase } from "@/integrations/supabase/client";
 
 // Funkce pro získání dat z Supabase a jejich převod na formát TvModel

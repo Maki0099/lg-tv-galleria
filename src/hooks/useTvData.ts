@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { TvModel } from "@/data/tvData";
+import { TvModel } from "@/data/models/TvModel";
 import { tvs as fallbackTvs } from "@/data/tvData";
 import { fetchTvsFromSupabase } from "@/utils/tv/fetchTvData";
 import { useToast } from "@/components/ui/use-toast";
