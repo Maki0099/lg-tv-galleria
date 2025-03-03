@@ -101,6 +101,14 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         }
       }
 
+      // Určení rozlišení
+      let resolution = "4K Ultra HD";
+      if (item["Key features"]?.includes("8K")) {
+        resolution = "8K Ultra HD";
+      } else if (item["Key features"]?.includes("Full HD") || item["Key features"]?.includes("1080p")) {
+        resolution = "Full HD";
+      }
+
       // Generování jedinečného ID
       const itemId = index + 1;
 
@@ -117,7 +125,8 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         highlights: highlights,
         recommendation: "Pro běžné sledování TV",
         sizes: sizes,
-        keyFeaturesFull: keyFeaturesFull  // Přidáme plné znění Key features
+        keyFeaturesFull: keyFeaturesFull,
+        resolution: resolution
       };
     });
 

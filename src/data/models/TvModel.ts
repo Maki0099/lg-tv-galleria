@@ -13,4 +13,5 @@ export interface TvModel {
   sizes?: string[];
   modelNumber?: string;
   keyFeaturesFull?: string;
+  resolution?: string;
 }
