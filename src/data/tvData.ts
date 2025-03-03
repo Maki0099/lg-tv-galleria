@@ -11,7 +11,8 @@ export interface TvModel {
   highlights: string[];
   recommendation: string;
   sizes?: string[];
-  modelNumber?: string; // Přidáme modelové číslo pro přesnější porovnání
+  modelNumber?: string;
+  keyFeaturesFull?: string; // Add the new property
 }
 
 export const tvs: TvModel[] = [
