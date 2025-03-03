@@ -34,7 +34,9 @@
     "availableSizes": "Dostupné velikostní varianty",
     "selected": "Aktuálně zobrazeno",
     "viewing": "Aktuální",
-    "view": "Zobrazit"
+    "view": "Zobrazit",
+    "availableModels": "Dostupné modely",
+    "noModels": "Žádné modely nebyly nalezeny"
   },
   "viewToggle": {
     "detail": "Detailní zobrazení",

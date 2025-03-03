@@ -34,7 +34,9 @@
     "availableSizes": "Available Size Variants",
     "selected": "Currently Viewing",
     "viewing": "Current",
-    "view": "View"
+    "view": "View",
+    "availableModels": "Available Models",
+    "noModels": "No models found"
   },
   "viewToggle": {
     "detail": "Detailed View",
@@ -43,5 +45,25 @@
   "language": {
     "cs": "Čeština",
     "en": "English"
+  },
+  "technology": {
+    "title": "Technology",
+    "modelSeries": "Model Series"
+  },
+  "modelSeries": {
+    "highlights": "Key Highlights",
+    "availableSizes": "Available Sizes",
+    "showModels": "View Models",
+    "sortBy": "Sort By"
+  },
+  "sizes": {
+    "title": "Sizes",
+    "diagonal": "diagonal"
+  },
+  "filters": {
+    "all": "All",
+    "gaming": "Gaming",
+    "smart": "Smart TV",
+    "dolby": "Dolby Vision"
   }
 }

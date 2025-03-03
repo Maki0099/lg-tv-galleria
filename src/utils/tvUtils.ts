@@ -118,6 +118,16 @@ export function groupTvsByModelNumber(tvs: TvModel[]): Record<string, TvModel[]>
   return grouped;
 }
 
+// Funkce pro seřazení TV podle velikosti úhlopříčky (od největší k nejmenší)
+export function sortTvsBySizeDescending(tvs: TvModel[]): TvModel[] {
+  return [...tvs].sort((a, b) => {
+    // Extrahujeme číslo z velikosti (např. z "55\"" získáme 55)
+    const sizeA = parseInt(a.sizes?.[0]?.replace(/"/g, '') || '0');
+    const sizeB = parseInt(b.sizes?.[0]?.replace(/"/g, '') || '0');
+    return sizeB - sizeA; // Sestupné řazení
+  });
+}
+
 // Funkce pro seřazení TV podle velikosti úhlopříčky
 export function sortTvsBySize(tvs: TvModel[]): TvModel[] {
   return [...tvs].sort((a, b) => {
@@ -354,4 +364,20 @@ export function getModelSeriesByTechnology(technology: string): any[] {
       id: key,
       ...info
     }));
+}
+
+// Funkce pro získání konkrétní modelové řady podle ID
+export function getModelSeriesById(seriesId: string): any {
+  if (modelSeriesInfo[seriesId]) {
+    return {
+      id: seriesId,
+      ...modelSeriesInfo[seriesId]
+    };
+  }
+  return null;
+}
+
+// Funkce pro získání TV modelů patřících do dané modelové řady
+export function getTvsByModelSeries(tvs: TvModel[], seriesId: string): TvModel[] {
+  return tvs.filter(tv => tv.modelNumber === seriesId);
 }
