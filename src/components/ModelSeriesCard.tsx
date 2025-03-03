@@ -14,6 +14,7 @@ interface ModelSeriesProps {
     description: string;
     highlights: string[];
     sizes: string[];
+    tier: string;
   };
 }
 
@@ -61,6 +62,20 @@ export const ModelSeriesCard = ({ series }: ModelSeriesProps) => {
     }
   };
   
+  // Funkce pro výběr barev podle úrovně modelu
+  const getTierBadgeStyle = (tier: string) => {
+    switch(tier) {
+      case "hi-end":
+        return "bg-amber-500 text-white";
+      case "střední":
+        return "bg-blue-500 text-white";
+      case "základní":
+        return "bg-slate-500 text-white";
+      default:
+        return "bg-gray-500 text-white";
+    }
+  };
+  
   const colors = getColorsForTechnology(series.technology);
   
   return (
@@ -68,9 +83,14 @@ export const ModelSeriesCard = ({ series }: ModelSeriesProps) => {
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
           <CardTitle className="text-lg">{series.name}</CardTitle>
-          <Badge variant="outline" className={cn(colors.badgeBg, colors.badgeText, "uppercase text-xs")}>
-            {series.technology}
-          </Badge>
+          <div className="flex gap-2">
+            <Badge variant="outline" className={cn(colors.badgeBg, colors.badgeText, "uppercase text-xs")}>
+              {series.technology}
+            </Badge>
+            <Badge className={cn("text-xs", getTierBadgeStyle(series.tier))}>
+              {series.tier}
+            </Badge>
+          </div>
         </div>
         <CardDescription className="line-clamp-2">
           {series.description}

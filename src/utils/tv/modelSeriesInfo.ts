@@ -11,7 +11,8 @@ export const modelSeriesInfo = {
       "Gallery design pro montáž na zeď",
       "α9 AI procesor 4. generace"
     ],
-    sizes: ["55\"", "65\"", "77\"", "83\""]
+    sizes: ["55\"", "65\"", "77\"", "83\""],
+    tier: "hi-end"
   },
   "C3": {
     name: "LG OLED C3",
@@ -23,7 +24,8 @@ export const modelSeriesInfo = {
       "α9 AI procesor 4. generace",
       "Všestranné použití pro filmy i hry"
     ],
-    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""]
+    sizes: ["42\"", "48\"", "55\"", "65\"", "77\"", "83\""],
+    tier: "hi-end"
   },
   "B3": {
     name: "LG OLED B3",
@@ -35,7 +37,8 @@ export const modelSeriesInfo = {
       "α7 AI procesor",
       "Dobrá volba pro první OLED TV"
     ],
-    sizes: ["55\"", "65\"", "77\""]
+    sizes: ["55\"", "65\"", "77\""],
+    tier: "střední"
   },
   "QNED99": {
     name: "LG QNED99",
@@ -47,7 +50,8 @@ export const modelSeriesInfo = {
       "Quantum Dot + NanoCell",
       "α9 AI procesor 4. generace"
     ],
-    sizes: ["65\"", "75\"", "86\""]
+    sizes: ["65\"", "75\"", "86\""],
+    tier: "hi-end"
   },
   "QNED91": {
     name: "LG QNED91",
@@ -59,7 +63,8 @@ export const modelSeriesInfo = {
       "4K rozlišení s HDR10 Pro",
       "α7 AI procesor 4. generace"
     ],
-    sizes: ["65\"", "75\"", "86\""]
+    sizes: ["65\"", "75\"", "86\""],
+    tier: "hi-end"
   },
   "QNED86": {
     name: "LG QNED86",
@@ -71,7 +76,8 @@ export const modelSeriesInfo = {
       "4K rozlišení s HDR",
       "α7 AI procesor"
     ],
-    sizes: ["65\"", "75\"", "86\""]
+    sizes: ["65\"", "75\"", "86\""],
+    tier: "střední"
   },
   "QNED81": {
     name: "LG QNED81",
@@ -83,7 +89,8 @@ export const modelSeriesInfo = {
       "4K rozlišení s HDR",
       "α5 AI procesor"
     ],
-    sizes: ["50\"", "55\"", "65\"", "75\""]
+    sizes: ["50\"", "55\"", "65\"", "75\""],
+    tier: "základní"
   },
   "NANO91": {
     name: "LG NANO91",
@@ -95,7 +102,8 @@ export const modelSeriesInfo = {
       "4K rozlišení s HDR",
       "α7 AI procesor"
     ],
-    sizes: ["55\"", "65\"", "75\"", "86\""]
+    sizes: ["55\"", "65\"", "75\"", "86\""],
+    tier: "střední"
   },
   "NANO86": {
     name: "LG NANO86",
@@ -107,7 +115,8 @@ export const modelSeriesInfo = {
       "α5 AI procesor",
       "120Hz panel pro plynulý pohyb"
     ],
-    sizes: ["50\"", "55\"", "65\"", "75\""]
+    sizes: ["50\"", "55\"", "65\"", "75\""],
+    tier: "střední"
   },
   "NANO75": {
     name: "LG NANO75",
@@ -119,7 +128,8 @@ export const modelSeriesInfo = {
       "α5 AI procesor",
       "Dobrý poměr cena/výkon"
     ],
-    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""],
+    tier: "základní"
   },
   "UR8": {
     name: "LG UR8",
@@ -131,7 +141,8 @@ export const modelSeriesInfo = {
       "Režim AI pro optimalizaci obrazu",
       "Dobrá cena za 4K rozlišení"
     ],
-    sizes: ["43\"", "50\"", "55\"", "65\"", "70\"", "75\"", "86\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "70\"", "75\"", "86\""],
+    tier: "základní"
   },
   "UQ7": {
     name: "LG UQ7",
@@ -143,6 +154,7 @@ export const modelSeriesInfo = {
       "Game Optimizer",
       "Výborný poměr cena/velikost"
     ],
-    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""]
+    sizes: ["43\"", "50\"", "55\"", "65\"", "75\""],
+    tier: "základní"
   }
 };

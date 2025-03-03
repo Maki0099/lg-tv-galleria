@@ -66,5 +66,10 @@
     "gaming": "Gaming",
     "smart": "Smart TV",
     "dolby": "Dolby Vision"
+  },
+  "tier": {
+    "hi-end": "High-End",
+    "střední": "Mid-Range",
+    "základní": "Entry-Level"
   }
 }

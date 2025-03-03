@@ -11,6 +11,7 @@ interface ModelSeriesHeaderProps {
     technology: string;
     highlights: string[];
     sizes: string[];
+    tier: string;
   };
 }
 
@@ -28,14 +29,6 @@ export const ModelSeriesHeader = ({ seriesInfo }: ModelSeriesHeaderProps) => {
           highlight: "bg-[#001744]/5",
           bulletColor: "text-[#001744]"
         };
-      case "QNED":
-        return {
-          bg: "bg-gradient-to-br from-[#FFB612]/10 to-[#FFB612]/20 border-[#FFB612]/40",
-          badgeBg: "bg-[#FFB612]",
-          badgeText: "text-[#001744]",
-          highlight: "bg-[#FFB612]/5",
-          bulletColor: "text-[#FFB612]"
-        };
       case "NanoCell":
         return {
           bg: "bg-gradient-to-br from-[#001744]/5 to-[#FFB612]/10 border-[#001744]/30",
@@ -43,6 +36,14 @@ export const ModelSeriesHeader = ({ seriesInfo }: ModelSeriesHeaderProps) => {
           badgeText: "text-white",
           highlight: "bg-[#001744]/5",
           bulletColor: "text-[#001744]"
+        };
+      case "QNED":
+        return {
+          bg: "bg-gradient-to-br from-[#FFB612]/10 to-[#FFB612]/20 border-[#FFB612]/40",
+          badgeBg: "bg-[#FFB612]",
+          badgeText: "text-[#001744]",
+          highlight: "bg-[#FFB612]/5",
+          bulletColor: "text-[#FFB612]"
         };
       case "LED":
         return {
@@ -63,6 +64,20 @@ export const ModelSeriesHeader = ({ seriesInfo }: ModelSeriesHeaderProps) => {
     }
   };
 
+  // Funkce pro výběr barev podle úrovně modelu
+  const getTierBadgeStyle = (tier: string) => {
+    switch(tier) {
+      case "hi-end":
+        return "bg-amber-500 text-white";
+      case "střední":
+        return "bg-blue-500 text-white";
+      case "základní":
+        return "bg-slate-500 text-white";
+      default:
+        return "bg-gray-500 text-white";
+    }
+  };
+
   const colors = getColorsForTechnology(seriesInfo.technology);
 
   return (
@@ -75,9 +90,14 @@ export const ModelSeriesHeader = ({ seriesInfo }: ModelSeriesHeaderProps) => {
                 <h1 className="text-3xl font-bold">{seriesInfo.name}</h1>
                 <p className="text-lg text-muted-foreground mt-1">{seriesInfo.description}</p>
               </div>
-              <Badge className={cn(colors.badgeBg, colors.badgeText, "uppercase ml-2")}>
-                {seriesInfo.technology}
-              </Badge>
+              <div className="flex flex-col gap-2">
+                <Badge className={cn(colors.badgeBg, colors.badgeText, "uppercase ml-2")}>
+                  {seriesInfo.technology}
+                </Badge>
+                <Badge className={cn("ml-2", getTierBadgeStyle(seriesInfo.tier))}>
+                  {seriesInfo.tier}
+                </Badge>
+              </div>
             </div>
             
             <div className="mt-4">

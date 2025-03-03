@@ -15,9 +15,9 @@ export type Database = {
           "Dostupnost centrálního skladu": string | null
           "Dostupnost na prodejně": string | null
           Kategorie: string | null
-          kód: string | null
           Název: string | null
           Obrázek: string | null
+          "Primary key": string | null
           URL: string | null
         }
         Insert: {
@@ -25,9 +25,9 @@ export type Database = {
           "Dostupnost centrálního skladu"?: string | null
           "Dostupnost na prodejně"?: string | null
           Kategorie?: string | null
-          kód?: string | null
           Název?: string | null
           Obrázek?: string | null
+          "Primary key"?: string | null
           URL?: string | null
         }
         Update: {
@@ -35,9 +35,9 @@ export type Database = {
           "Dostupnost centrálního skladu"?: string | null
           "Dostupnost na prodejně"?: string | null
           Kategorie?: string | null
-          kód?: string | null
           Název?: string | null
           Obrázek?: string | null
+          "Primary key"?: string | null
           URL?: string | null
         }
         Relationships: []
