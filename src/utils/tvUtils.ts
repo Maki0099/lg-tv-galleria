@@ -1,4 +1,3 @@
-
 import { TvModel } from "@/data/tvData";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -31,7 +30,7 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
     }
 
     // Mapování dat z Supabase na TvModel
-    const tvs: TvModel[] = data.map((item, index) => {
+    const tvs: TvModel[] = data.map((item: any, index) => {
       // Určení série podle kategorie
       let series = "LED"; // Výchozí hodnota
       if (item.Kategorie?.includes("OLED")) {
@@ -52,8 +51,8 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         tier = "Mid-range";
       }
 
-      // Generování jedinečného ID, pokud neexistuje
-      const itemId = item.id || index + 1;
+      // Generování jedinečného ID
+      const itemId = index + 1;
 
       return {
         id: itemId,

@@ -1,6 +1,6 @@
 
 import { useTranslation } from "react-i18next";
-import { groupTvsByCategories } from "@/utils/tvUtils";
+import { groupTvsByTechnology } from "@/utils/tvUtils";
 import { TvSeriesSection } from "./TvSeriesSection";
 import { useTvData } from "@/hooks/useTvData";
 
@@ -8,7 +8,7 @@ export const TvGrid = () => {
   const { t } = useTranslation();
   const { loading, error, data: tvData } = useTvData();
   
-  const groupedTvs = groupTvsByCategories(tvData);
+  const groupedTvs = groupTvsByTechnology(tvData);
 
   if (loading) {
     return (
