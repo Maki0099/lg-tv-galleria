@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
 import { useTvData } from "@/hooks/useTvData";
-import { getModelSeriesById, getTvsByModelSeries, sortTvsBySizeDescending } from "@/utils/tvUtils";
+import { getModelSeriesById, getTvsByModelSeries, sortTvsBySizeDescending } from "@/utils/tv";
 import { cn } from "@/lib/utils";
 
 const ModelSeriesDetail = () => {

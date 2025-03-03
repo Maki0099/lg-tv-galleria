@@ -1,7 +1,6 @@
-
 import { useTranslation } from "react-i18next";
 import { ModelSeriesCard } from "./ModelSeriesCard";
-import { technologyInfo, getModelSeriesByTechnology } from "@/utils/tvUtils";
+import { technologyInfo, getModelSeriesByTechnology } from "@/utils/tv";
 
 interface TechnologySectionProps {
   technology: string;

@@ -9,7 +9,7 @@ import { ChevronLeft, Monitor, Star } from "lucide-react";
 import { CompactTvCard } from "@/components/tv-card/CompactTvCard";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { findSizeVariants } from "@/utils/tvUtils";
+import { findSizeVariants } from "@/utils/tv";
 import { useTvData } from "@/hooks/useTvData";
 import { Navigation } from "@/components/Navigation";
 
