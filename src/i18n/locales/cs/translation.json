@@ -3,7 +3,8 @@
   "brand": "Datart LG TV",
   "navigation": {
     "home": "Domů",
-    "back": "Zpět"
+    "back": "Zpět",
+    "search": "Hledat..."
   },
   "filter": {
     "title": "Filtry",
@@ -71,5 +72,10 @@
     "hi-end": "Hi-End",
     "střední": "Střední třída",
     "základní": "Základní model"
+  },
+  "view": {
+    "toggle": "Přepnout zobrazení",
+    "expandedView": "Rozšířené zobrazení",
+    "compactView": "Kompaktní zobrazení"
   }
 }

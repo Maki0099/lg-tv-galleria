@@ -1,3 +1,4 @@
+
 import { useTranslation } from "react-i18next";
 import { ModelSeriesCard } from "./ModelSeriesCard";
 import { technologyInfo, getModelSeriesByTechnology } from "@/utils/tv";
@@ -78,7 +79,7 @@ export const TechnologySection = ({ technology }: TechnologySectionProps) => {
   if (!techInfo) return null;
 
   return (
-    <section className={`mb-12 p-6 rounded-lg ${getBgColor(technology)}`}>
+    <section id={technology} className={`mb-12 p-6 rounded-lg ${getBgColor(technology)}`}>
       <div className="flex items-center gap-3 mb-2">
         {getTechIcon(technology)}
         <h2 className={`text-2xl font-bold ${getTitleColor(technology)}`}>

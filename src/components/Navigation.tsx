@@ -12,6 +12,17 @@ export const Navigation = () => {
   const { t } = useTranslation();
   const { isCompactView, toggleView } = useView();
 
+  // Function to handle smooth scrolling to technology sections
+  const scrollToTechnology = (techId: string) => {
+    const element = document.getElementById(techId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-lg bg-background/80 border-b dark:bg-background/90 dark:border-border/40">
       <div className="container mx-auto px-4">
@@ -19,10 +30,30 @@ export const Navigation = () => {
           <div className="flex items-center space-x-8">
             <h1 className="text-xl font-semibold">{t('brand')}</h1>
             <div className="hidden md:flex space-x-6">
-              <a href="#" className="nav-link">{t('navigation.news')}</a>
-              <a href="#" className="nav-link">OLED</a>
-              <a href="#" className="nav-link">QNED</a>
-              <a href="#" className="nav-link">LED</a>
+              <button 
+                onClick={() => scrollToTechnology('OLED')} 
+                className="nav-link hover:text-[#001744] dark:hover:text-[#FFB612] transition-colors"
+              >
+                OLED
+              </button>
+              <button 
+                onClick={() => scrollToTechnology('QNED')}
+                className="nav-link hover:text-[#001744] dark:hover:text-[#FFB612] transition-colors"
+              >
+                QNED
+              </button>
+              <button 
+                onClick={() => scrollToTechnology('NanoCell')}
+                className="nav-link hover:text-[#001744] dark:hover:text-[#FFB612] transition-colors"
+              >
+                NanoCell
+              </button>
+              <button 
+                onClick={() => scrollToTechnology('LED')}
+                className="nav-link hover:text-[#001744] dark:hover:text-[#FFB612] transition-colors"
+              >
+                LED
+              </button>
             </div>
           </div>
           
