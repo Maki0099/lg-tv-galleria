@@ -5,13 +5,16 @@ import { supabase } from "@/integrations/supabase/client";
 // Funkce pro získání dat z Supabase a jejich převod na formát TvModel
 export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
   try {
+    console.log("Attempting to connect to Supabase LGTV3 table...");
+    
+    // Explicitně specifikujeme tabulku a všechny sloupce
     const { data, error } = await supabase
       .from('LGTV3')
       .select('*');
 
     if (error) {
       console.error("Supabase connection error:", error);
-      throw new Error("Failed to fetch data from Supabase");
+      throw new Error(`Failed to fetch data from Supabase: ${error.message}`);
     }
 
     if (!data || data.length === 0) {
@@ -19,7 +22,8 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
       return [];
     }
 
-    console.log("Raw Supabase data:", data);
+    console.log(`Successfully fetched ${data.length} records from LGTV3 table`);
+    console.log("First record sample:", data[0]);
 
     // Mapování dat z Supabase na TvModel
     const tvs: TvModel[] = data.map((item: any, index) => {

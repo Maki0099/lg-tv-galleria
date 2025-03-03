@@ -1,11 +1,14 @@
+
 import { Navigation } from "@/components/Navigation";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useTvRepository } from "@/hooks/useTvRepository";
 import { TechnologySection } from "@/components/TechnologySection";
 import { useToast } from "@/components/ui/use-toast";
+
 const Index = () => {
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
+  const [connectionStatus, setConnectionStatus] = useState<string>("Kontroluji připojení k databázi...");
   const {
     loading,
     error,
@@ -19,6 +22,9 @@ const Index = () => {
   useEffect(() => {
     async function checkConnection() {
       try {
+        setConnectionStatus("Připojuji se k databázi LGTV3...");
+        console.log("Checking Supabase LGTV3 connection");
+        
         const {
           data,
           error
@@ -26,29 +32,39 @@ const Index = () => {
           count: "exact",
           head: true
         });
+        
         if (error) {
           console.error("Supabase connection error:", error);
           setIsConnected(false);
+          setConnectionStatus(`Nepodařilo se připojit k databázi: ${error.message}`);
         } else {
           console.log("Supabase connection successful");
           setIsConnected(true);
+          setConnectionStatus("Připojení k databázi LGTV3 úspěšné");
         }
       } catch (err) {
         console.error("Failed to check Supabase connection:", err);
         setIsConnected(false);
+        const errorMsg = err instanceof Error ? err.message : "Neznámá chyba";
+        setConnectionStatus(`Chyba při připojení k databázi: ${errorMsg}`);
       }
     }
     checkConnection();
   }, []);
+  
   return <div className="min-h-screen bg-background">
       <Navigation />
       
-      {isConnected === false && <div className="container mx-auto px-4 mt-4">
-          <div className="bg-yellow-100 border-l-4 border-[#FFB612] text-[#001744] p-4 rounded" role="alert">
-            <p className="font-bold">Upozornění</p>
-            <p>Nepodařilo se připojit k databázi. Budou zobrazena výchozí data.</p>
-          </div>
-        </div>}
+      <div className="container mx-auto px-4 mt-4">
+        <div className={`border-l-4 p-4 rounded mb-4 ${
+          isConnected === null ? "bg-gray-100 border-gray-500 text-gray-700" :
+          isConnected === true ? "bg-green-100 border-[#FFB612] text-[#001744]" :
+          "bg-yellow-100 border-[#FFB612] text-[#001744]"
+        }`} role="alert">
+          <p className="font-bold">Stav připojení k databázi</p>
+          <p>{connectionStatus}</p>
+        </div>
+      </div>
       
       {error && <div className="container mx-auto px-4 mt-4">
           <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
@@ -78,4 +94,5 @@ const Index = () => {
       </div>
     </div>;
 };
+
 export default Index;
