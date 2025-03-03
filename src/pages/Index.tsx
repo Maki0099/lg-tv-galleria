@@ -15,7 +15,7 @@ const Index = () => {
   useEffect(() => {
     async function checkConnection() {
       try {
-        const { data, error } = await supabase.from("LGTV 2").select("count()", { count: "exact", head: true });
+        const { data, error } = await supabase.from("LGTV3").select("count()", { count: "exact", head: true });
         if (error) {
           console.error("Supabase connection error:", error);
           setIsConnected(false);

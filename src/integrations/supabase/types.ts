@@ -9,36 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "LGTV 2": {
+      LGTV3: {
         Row: {
-          cena: number | null
-          "Dostupnost centrálního skladu": string | null
-          "Dostupnost na prodejně": string | null
-          Kategorie: string | null
-          Název: string | null
-          Obrázek: string | null
-          "Primary key": string | null
+          Description: string | null
+          "Dimensions and weight": string | null
+          "Key features": string | null
+          Name: string | null
+          Picture: string | null
+          Price: string | null
+          "PRIMARY KEY": string | null
+          "Store availability": string | null
           URL: string | null
+          "Warehouse availability": string | null
         }
         Insert: {
-          cena?: number | null
-          "Dostupnost centrálního skladu"?: string | null
-          "Dostupnost na prodejně"?: string | null
-          Kategorie?: string | null
-          Název?: string | null
-          Obrázek?: string | null
-          "Primary key"?: string | null
+          Description?: string | null
+          "Dimensions and weight"?: string | null
+          "Key features"?: string | null
+          Name?: string | null
+          Picture?: string | null
+          Price?: string | null
+          "PRIMARY KEY"?: string | null
+          "Store availability"?: string | null
           URL?: string | null
+          "Warehouse availability"?: string | null
         }
         Update: {
-          cena?: number | null
-          "Dostupnost centrálního skladu"?: string | null
-          "Dostupnost na prodejně"?: string | null
-          Kategorie?: string | null
-          Název?: string | null
-          Obrázek?: string | null
-          "Primary key"?: string | null
+          Description?: string | null
+          "Dimensions and weight"?: string | null
+          "Key features"?: string | null
+          Name?: string | null
+          Picture?: string | null
+          Price?: string | null
+          "PRIMARY KEY"?: string | null
+          "Store availability"?: string | null
           URL?: string | null
+          "Warehouse availability"?: string | null
         }
         Relationships: []
       }

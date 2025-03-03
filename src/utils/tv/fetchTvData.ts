@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
   try {
     const { data, error } = await supabase
-      .from('LGTV 2')
+      .from('LGTV3')
       .select('*');
 
     if (error) {
@@ -23,21 +23,21 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
 
     // Mapování dat z Supabase na TvModel
     const tvs: TvModel[] = data.map((item: any, index) => {
-      // Určení série podle kategorie
+      // Určení série podle technologie z popisu
       let series = "LED"; // Výchozí hodnota
-      if (item.Kategorie?.includes("OLED")) {
+      if (item.Description?.includes("OLED")) {
         series = "OLED";
-      } else if (item.Kategorie?.includes("QNED")) {
+      } else if (item.Description?.includes("QNED")) {
         series = "QNED";
-      } else if (item.Kategorie?.includes("NanoCell")) {
+      } else if (item.Description?.includes("NanoCell")) {
         series = "NanoCell";
       }
 
-      // Určení modelové řady z kódu
+      // Určení modelové řady z názvu
       let modelNumber = "";
-      if (item.kód) {
-        // Extrahujeme část kódu, která označuje modelovou řadu
-        const matches = item.kód.match(/[A-Z]+\d+/);
+      if (item.Name) {
+        // Extrahujeme část názvu, která označuje modelovou řadu
+        const matches = item.Name.match(/[A-Z]+\d+/);
         if (matches && matches.length > 0) {
           modelNumber = matches[0];
         }
@@ -45,20 +45,56 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
 
       // Určení tier podle ceny
       let tier = "Entry";
-      if (item.cena > 50000) {
+      const price = parseFloat(item.Price || "0");
+      if (price > 50000) {
         tier = "Premium";
-      } else if (item.cena > 30000) {
+      } else if (price > 30000) {
         tier = "High-end";
-      } else if (item.cena > 20000) {
+      } else if (price > 20000) {
         tier = "Mid-range";
       }
 
       // Generování velikosti z názvu
       let sizes: string[] = ["55\""];
-      if (item.Název) {
-        const sizeMatch = item.Název.match(/(\d{2})"/);
+      if (item.Name) {
+        const sizeMatch = item.Name.match(/(\d{2})"/);
         if (sizeMatch && sizeMatch.length > 1) {
           sizes = [`${sizeMatch[1]}"`];
+        }
+      }
+
+      // Generování seznamu funkcí z Key features
+      let features = ["4K", "Smart TV", "WebOS"];
+      if (item["Key features"]) {
+        try {
+          const keyFeaturesArr = item["Key features"]
+            .split(',')
+            .map((feature: string) => feature.trim())
+            .filter((feature: string) => feature.length > 0);
+          
+          if (keyFeaturesArr.length > 0) {
+            features = keyFeaturesArr;
+          }
+        } catch (e) {
+          console.warn("Could not parse key features:", e);
+        }
+      }
+
+      // Generování highlightů z Description
+      let highlights = ["Vysoký jas", "Živé barvy", "Skvělý zvuk"];
+      if (item.Description) {
+        try {
+          const descriptionPoints = item.Description
+            .split('.')
+            .map((point: string) => point.trim())
+            .filter((point: string) => point.length > 3 && point.length < 50)
+            .slice(0, 3);
+          
+          if (descriptionPoints.length > 0) {
+            highlights = descriptionPoints;
+          }
+        } catch (e) {
+          console.warn("Could not parse description for highlights:", e);
         }
       }
 
@@ -67,19 +103,15 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
 
       return {
         id: itemId,
-        title: item.Název || `TV Model ${index}`,
-        subtitle: item.Kategorie || "TV",
-        image: item.Obrázek || "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
-        price: item.cena || 0,
+        title: item.Name || `TV Model ${index}`,
+        subtitle: item.Description?.substring(0, 50) || "TV",
+        image: item.Picture || "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
+        price: parseFloat(item.Price || "0"),
         series: series,
         tier: tier,
-        modelNumber: item.kód?.substring(0, 2) || "",
-        features: ["4K", "Smart TV", "WebOS"],
-        highlights: [
-          "Vysoký jas",
-          "Živé barvy",
-          "Skvělý zvuk"
-        ],
+        modelNumber: modelNumber,
+        features: features,
+        highlights: highlights,
         recommendation: "Pro běžné sledování TV",
         sizes: sizes
       };
