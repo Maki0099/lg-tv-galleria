@@ -1,3 +1,4 @@
+
 import { TvModel } from "@/data/tvData";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -29,6 +30,8 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
       return [];
     }
 
+    console.log("Raw Supabase data:", data);
+
     // Mapování dat z Supabase na TvModel
     const tvs: TvModel[] = data.map((item: any, index) => {
       // Určení série podle kategorie
@@ -41,6 +44,16 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         series = "NanoCell";
       }
 
+      // Určení modelové řady z kódu
+      let modelNumber = "";
+      if (item.kód) {
+        // Extrahujeme část kódu, která označuje modelovou řadu
+        const matches = item.kód.match(/[A-Z]+\d+/);
+        if (matches && matches.length > 0) {
+          modelNumber = matches[0];
+        }
+      }
+
       // Určení tier podle ceny
       let tier = "Entry";
       if (item.cena > 50000) {
@@ -49,6 +62,15 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         tier = "High-end";
       } else if (item.cena > 20000) {
         tier = "Mid-range";
+      }
+
+      // Generování velikosti z názvu
+      let sizes: string[] = ["55\""];
+      if (item.Název) {
+        const sizeMatch = item.Název.match(/(\d{2})"/);
+        if (sizeMatch && sizeMatch.length > 1) {
+          sizes = [`${sizeMatch[1]}"`];
+        }
       }
 
       // Generování jedinečného ID
@@ -62,7 +84,7 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
         price: item.cena || 0,
         series: series,
         tier: tier,
-        modelNumber: item.kód || "",
+        modelNumber: item.kód?.substring(0, 2) || "",
         features: ["4K", "Smart TV", "WebOS"],
         highlights: [
           "Vysoký jas",
@@ -70,11 +92,11 @@ export async function fetchTvsFromSupabase(): Promise<TvModel[]> {
           "Skvělý zvuk"
         ],
         recommendation: "Pro běžné sledování TV",
-        sizes: ["55\"", "65\""]
+        sizes: sizes
       };
     });
 
-    console.log("Loaded TVs from Supabase:", tvs.length);
+    console.log("Mapped TVs from Supabase:", tvs.length);
     return tvs;
   } catch (error) {
     console.error("Error fetching TV data:", error);

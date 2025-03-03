@@ -4,7 +4,6 @@ import { TvModel } from "@/data/tvData";
 import { tvs as fallbackTvs } from "@/data/tvData";
 import { fetchTvsFromSupabase } from "@/utils/tvUtils";
 import { useToast } from "@/components/ui/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 export const useTvData = () => {
   const [loading, setLoading] = useState(true);
@@ -20,6 +19,7 @@ export const useTvData = () => {
         setLoading(true);
         setError(null);
         
+        // Fetch data from Supabase LGTV2 table
         const tvData = await fetchTvsFromSupabase();
         
         if (isMounted) {
@@ -33,6 +33,7 @@ export const useTvData = () => {
             });
           } else {
             setData(tvData);
+            console.log("Loaded TV data from Supabase:", tvData.length, "items");
           }
         }
       } catch (err) {
